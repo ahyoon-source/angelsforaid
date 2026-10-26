@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Angels for Aid</title>
+  <meta name="description" content="Angels for Aid: where fashion meets politics. Follow us, meet the editorial board, and read our weekly newsletter.">
+  <meta property="og:title" content="Angels for Aid">
+  <meta property="og:description" content="Where fashion meets politics. Read our weekly newsletter.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#fdf0f4">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🪽</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@300;400;500&family=Pinyon+Script&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Reusable drawings -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <linearGradient id="feather-fill" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stop-color="#ffffff"/>
+        <stop offset=".6" stop-color="#fdf3f6"/>
+        <stop offset="1" stop-color="#f3dbe4"/>
+      </linearGradient>
+      <linearGradient id="silver" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#f4f4f8"/>
+        <stop offset=".45" stop-color="#b9b9c8"/>
+        <stop offset=".55" stop-color="#e8e8ef"/>
+        <stop offset="1" stop-color="#a3a3b5"/>
+      </linearGradient>
+      <symbol id="halo" viewBox="0 0 100 30">
+        <ellipse cx="50" cy="15" rx="44" ry="10" fill="none" stroke="url(#silver)" stroke-width="3.5"/>
+        <ellipse cx="50" cy="15" rx="44" ry="10" fill="none" stroke="#fff" stroke-width="1.2" stroke-dasharray="14 70" stroke-linecap="round"/>
+      </symbol>
+      <symbol id="sparkle" viewBox="0 0 40 40">
+        <path d="M20 0c1.2 11.5 7.5 18 20 20-12.5 2-18.8 8.5-20 20-1.2-11.5-7.5-18-20-20 12.5-2 18.8-8.5 20-20z" fill="currentColor"/>
+      </symbol>
+      <symbol id="feather" viewBox="0 0 30 90">
+        <path d="M15 88C14 60 15 30 17 4" fill="none" stroke="#c9c9d6" stroke-width="1"/>
+        <path d="M17 4C29 18 28 44 20 66c-2 6-4 10-5 14-3-10-11-22-11-40C4 24 9 10 17 4z" fill="url(#feather-fill)" stroke="#d6d6e0" stroke-width=".8"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <div class="ticker" aria-hidden="true"><div class="ticker-track" id="ticker"></div></div>
+
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="#top">
+        <svg class="brand-halo"><use href="#halo"/></svg>
+        <span class="brand-word">Angels</span> <span class="brand-script">for aid</span>
+      </a>
+      <nav class="nav" aria-label="Main">
+        <a href="#about">About</a>
+        <a href="#newsletter">Newsletter</a>
+        <a href="#team">The Board</a>
+        <a href="#collaborators">Friends</a>
+      </nav>
+      <div class="icon-row" data-socials="icons"></div>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- HERO / RUNWAY -->
+    <section class="hero">
+      <div class="clouds" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+      <div class="spotlight sl-left" aria-hidden="true"></div>
+      <div class="spotlight sl-right" aria-hidden="true"></div>
+      <div class="drift" id="drift" aria-hidden="true"></div>
+
+      <div class="wrap hero-inner">
+        <p class="kicker">Fashion <span>✦</span> Politics <span>✦</span> Aid</p>
+        <div class="masthead-wrap">
+          <svg class="wings" id="wings" viewBox="-640 -300 1280 460" aria-hidden="true"></svg>
+          <h1 class="masthead">
+            <svg class="masthead-halo"><use href="#halo"/></svg>
+            <span class="mh-word">Angels</span>
+            <span class="mh-script">for aid</span>
+          </h1>
+        </div>
+        <p class="tagline" data-field="tagline"></p>
+        <div class="hero-actions">
+          <a class="btn btn-pearl" href="#newsletter">Subscribe</a>
+          <a class="btn btn-ghost" href="#follow">Follow Us</a>
+        </div>
+      </div>
+      <div class="runway" aria-hidden="true"></div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section">
+      <div class="wrap about">
+        <div class="about-head">
+          <p class="label">About Us</p>
+          <h2 class="big-italic">fashion is<br><span class="shimmer">political.</span></h2>
+        </div>
+        <div>
+          <p class="mission" data-field="mission"></p>
+          <div class="pillars" id="pillars"></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="pearls" aria-hidden="true"></div>
+
+    <!-- FOLLOW -->
+    <section id="follow" class="section blush">
+      <div class="wrap">
+        <p class="label center">Come Fly With Us</p>
+        <h2 class="section-title">follow the <em>angels</em></h2>
+        <div class="arches" data-socials="cards"></div>
+      </div>
+    </section>
+
+    <!-- NEWSLETTER -->
+    <section id="newsletter" class="section">
+      <div class="wrap">
+        <div class="letter">
+          <svg class="letter-halo"><use href="#halo"/></svg>
+          <p class="label center">The Weekly Newsletter</p>
+          <h2 class="letter-title">The Angel <em>Times</em></h2>
+          <p class="letter-blurb" data-field="newsletter.blurb"></p>
+          <div class="letter-grid">
+            <div id="signup"></div>
+            <div id="issues-wrap">
+              <p class="script-label">latest issues</p>
+              <ul class="issues" id="issues"></ul>
+              <a class="text-link" id="archive-link" href="#">Read the full archive →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="pearls" aria-hidden="true"></div>
+
+    <!-- BOARD -->
+    <section id="team" class="section blush">
+      <div class="wrap">
+        <p class="label center">Meet The Team</p>
+        <h2 class="section-title">the editorial <em>board</em></h2>
+        <div class="portraits" id="board"></div>
+      </div>
+    </section>
+
+    <!-- COLLABORATORS -->
+    <section id="collaborators" class="section">
+      <div class="wrap">
+        <p class="label center">Our Friends</p>
+        <h2 class="section-title">angels we've <em>worked with</em></h2>
+        <p class="section-sub">Creators and influencers who've helped spread the word.</p>
+        <div class="cameos" id="collabs"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <svg class="footer-feather f-l" aria-hidden="true"><use href="#feather"/></svg>
+      <svg class="footer-feather f-r" aria-hidden="true"><use href="#feather"/></svg>
+      <p class="xoxo">xoxo,</p>
+      <p class="footer-name"><span class="shimmer">Angels</span> <em>for aid</em></p>
+      <a class="footer-email" id="email-link" href="#"></a>
+      <div class="icon-row" data-socials="icons"></div>
+      <p class="copyright">© <span id="year"></span> Angels for Aid</p>
+    </div>
+  </footer>
+
+  <script src="content.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

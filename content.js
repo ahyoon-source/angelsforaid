@@ -1,0 +1,71 @@
+/*
+ * ============================================================
+ *  ANGELS FOR AID: SITE CONTENT ♡
+ *  This is the only file you need to edit to update the site.
+ *  Replace anything marked TODO. Keep the quotes and commas!
+ * ============================================================
+ */
+window.SITE = {
+  name: "Angels for Aid",
+  tagline: "where fashion meets politics.",
+  mission:
+    "TODO: Two or three sentences about your mission: who you help, how, and why it matters. " +
+    "This appears in the \"about us\" section near the top of the page.",
+  email: "angelsforaid@gmail.com",
+
+  // Words that scroll across the pink bar at the very top of the page
+  ticker: [
+    "fashion is political",
+    "dress loud, speak louder",
+    "angels for aid",
+    "read the newsletter",
+    "style with substance"
+  ],
+
+  // The three tags in the "about us" section
+  pillars: [
+    { title: "style",     text: "Fashion is how we show up. We use it to start conversations." },
+    { title: "substance", text: "Clear, honest coverage of the issues that matter, every week." },
+    { title: "aid",       text: "Turning attention into action for the causes we care about." }
+  ],
+
+  // ---- Social links ----
+  socials: {
+    tiktok:    { url: "https://www.tiktok.com/@angels4aid",     handle: "@angels4aid" },
+    instagram: { url: "https://www.instagram.com/angelsforaid", handle: "@angelsforaid" },
+    substack:  { url: "https://angelsforaid.substack.com",      handle: "angelsforaid.substack.com" }
+  },
+
+  // ---- Newsletter ----
+  newsletter: {
+    showSignup: true, // shows Substack's own email sign-up box
+    blurb: "Our weekly newsletter, with stories, style and ways to help, delivered to your inbox.",
+    // Add each new issue at the TOP of this list. Leave it empty [] to hide this part.
+    issues: [
+      {
+        title: "TODO: Issue #1 title",
+        date: "2026-10-20",
+        url: "https://angelsforaid.substack.com/archive",
+        summary: "TODO: One-sentence summary of this issue."
+      }
+    ]
+  },
+
+  // ---- Editorial board ----
+  // photo: put the image in the /images folder and write "images/filename.jpg"
+  // Leave photo as "" to show the person's initials instead.
+  board: [
+    { name: "TODO Full Name", role: "Editor-in-Chief",   bio: "TODO: A short bio, 2–3 sentences.", photo: "" },
+    { name: "TODO Full Name", role: "Managing Editor",   bio: "TODO: A short bio, 2–3 sentences.", photo: "" },
+    { name: "TODO Full Name", role: "Social Media Lead", bio: "TODO: A short bio, 2–3 sentences.", photo: "" }
+  ],
+
+  // ---- Influencers & collaborators ----
+  // platform: "tiktok", "instagram", "substack" or "youtube"
+  collaborators: [
+    { name: "TODO Creator", handle: "@handle", platform: "tiktok",    url: "https://www.tiktok.com/@handle",   photo: "" },
+    { name: "TODO Creator", handle: "@handle", platform: "instagram", url: "https://www.instagram.com/handle", photo: "" },
+    { name: "TODO Creator", handle: "@handle", platform: "tiktok",    url: "https://www.tiktok.com/@handle",   photo: "" },
+    { name: "TODO Creator", handle: "@handle", platform: "instagram", url: "https://www.instagram.com/handle", photo: "" }
+  ]
+};
