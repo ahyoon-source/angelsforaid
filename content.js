@@ -44,10 +44,10 @@ window.SITE = {
     // Add each new issue at the TOP of this list. Leave it empty [] to hide this part.
     issues: [
       {
-        title: "TODO: Issue #1 title",
-        date: "2026-10-20",
-        url: "https://angelsforaid.substack.com/archive",
-        summary: "TODO: One-sentence summary of this issue."
+        title: "I Attended a (Free) Turning Point USA Event.. Here are my Thoughts.",
+        date: "2026-10-22",
+        url: "https://angelsforaid.substack.com/p/i-attended-a-free-turning-point-usa",
+        summary: "A few nights ago, my university held an event with Turning Point USA (TPUSA)..."
       }
     ]
   },
