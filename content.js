@@ -56,17 +56,16 @@ window.SITE = {
   // photo: put the image in the /images folder and write "images/filename.jpg"
   // Leave photo as "" to show the person's initials instead.
   board: [
-    { name: "TODO Full Name", role: "Editor-in-Chief",   bio: "TODO: A short bio, 2–3 sentences.", photo: "" },
-    { name: "TODO Full Name", role: "Managing Editor",   bio: "TODO: A short bio, 2–3 sentences.", photo: "" },
-    { name: "TODO Full Name", role: "Social Media Lead", bio: "TODO: A short bio, 2–3 sentences.", photo: "" }
+    { name: "Emma Mulcahy", role: "Founder",   bio: "TODO: A short bio, 2–3 sentences.", photo: "" },
+    { name: "Acacia Yoon", role: "Editor and Social Media Lead",   bio: "TODO: A short bio, 2–3 sentences.", photo: "" },
   ],
 
   // ---- Influencers & collaborators ----
   // platform: "tiktok", "instagram", "substack" or "youtube"
   collaborators: [
-    { name: "TODO Creator", handle: "@handle", platform: "tiktok",    url: "https://www.tiktok.com/@handle",   photo: "" },
-    { name: "TODO Creator", handle: "@handle", platform: "instagram", url: "https://www.instagram.com/handle", photo: "" },
-    { name: "TODO Creator", handle: "@handle", platform: "tiktok",    url: "https://www.tiktok.com/@handle",   photo: "" },
-    { name: "TODO Creator", handle: "@handle", platform: "instagram", url: "https://www.instagram.com/handle", photo: "" }
+    { name: "Hailey Fuentes", handle: "@haileyfuentes_", platform: "tiktok",    url: "https://www.tiktok.com/@haileyfuentes_",   photo: "" },
+    { name: "Catherine Pinkos", handle: "@catherinepinknos", platform: "instagram", url: "https://www.instagram.com/catherinepinknos", photo: "" },
+    { name: "Phoenix", handle: "@phoenix.star07", platform: "tiktok",    url: "https://www.tiktok.com/@phoenix.star07",   photo: "" },
+    { name: "Serena Chappell", handle: "@serenachappell_", platform: "instagram", url: "https://www.instagram.com/serenachappell_", photo: "" }
   ]
 };
