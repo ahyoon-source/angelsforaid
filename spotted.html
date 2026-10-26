@@ -562,8 +562,9 @@ function render() {
 
   const checks = [
     ["Name & location", nIntro >= 2], ["3+ style answers", nB >= 3], ["Cause", !!val("cause")],
-    ["2+ cause answers", nC >= 2], ["A4A explanation", !!val("explain")], ["4–8 photos", nP >= 4 && nP <= 8]
+    ["2+ cause answers", nC >= 2], ["4–8 photos", nP >= 4 && nP <= 8]
   ];
+  if (location.hash === "#team") checks.splice(4, 0, ["A4A explanation", !!val("explain")]);
   $("#checklist").innerHTML = checks.map(([t, ok]) => `<li class="${ok ? "ok" : ""}">${t}</li>`).join("");
 
   const html = buildPost(true);
@@ -703,9 +704,10 @@ $("#v-post").onclick = () => setView("post");
 
 /* ---------- sending (Google Sheet via Apps Script) ---------- */
 // Paste your Apps Script web app URL here (see SPOTTED-SETUP.md).
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxDR-v-VXSyPZR9BWDp2C-wh-QGW8HgdxYXMfH8_Lfb98-KWpmaFXy_kpKu7OfNFFyH/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxpA627L3qHD-O8Ecc5AEK1d5-4fpznE5xQYisaFa6BQhFITybyWlOP8-ZtIEG7oC7N/exec";
 
 const isTeam = location.hash === "#team";
+window.addEventListener("hashchange", () => location.reload());
 document.querySelectorAll(".team-only").forEach(el => { el.hidden = !isTeam; });
 let sending = false;
 function setSendStatus(msg, ok = false) { const el = $("#send-status"); el.textContent = msg; el.classList.toggle("ok", ok); }
