@@ -1,0 +1,767 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Angel Spotted · Angels for Aid</title>
+<meta name="description" content="Be featured on the Angels for Aid blog. Answer a few questions about your style and the cause close to your heart.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🪽</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@300;400;500&family=Pinyon+Script&family=Playfair+Display:wght@400;600;700&display=swap">
+<style>
+/* Layout: questions in silver-rimmed pearl cards on the left, the finished blog post on a sheet on the right (stacked with a toggle on phones).
+   Palette and type follow the Angels for Aid site: pearl, blush, rose, metallic silver; Cormorant + Pinyon Script + Montserrat.
+   The brand is a single light look, so this page commits to it in every viewer theme. */
+:root {
+  color-scheme: light;
+  --white: #ffffff;
+  --pearl: #fffafc;
+  --blush: #fdf1f5;
+  --petal: #f9e1ea;
+  --rose: #ecbfcf;
+  --rose-deep: #b97b93;
+  --silver-light: #ececf2;
+  --silver: #c4c4d0;
+  --silver-dark: #8c8c9e;
+  --ink: #4b3b45;
+  --muted: #8a7680;
+  --metal: linear-gradient(180deg, #ffffff 0%, #dcdce6 28%, #9d9db0 50%, #eeeef4 62%, #b4b4c4 82%, #e6e6ee 100%);
+  --silver-border: linear-gradient(135deg, #ffffff, #c4c4d0 30%, #ffffff 50%, #b2b2c2 75%, #f2f2f6);
+  --glow: 0 10px 40px rgba(233, 170, 195, .28), 0 2px 8px rgba(160, 160, 180, .12);
+
+  --display: "Cormorant Garamond", "Cormorant", "Didot", Georgia, serif;
+  --script: "Pinyon Script", "Snell Roundhand", "Apple Chancery", cursive;
+  --sans: "Montserrat", "Helvetica Neue", system-ui, sans-serif;
+  --f-post: "Playfair Display", Georgia, "Times New Roman", serif;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+img { max-width: 100%; }
+[hidden] { display: none !important; }
+body {
+  background:
+    radial-gradient(70rem 30rem at 50% -8rem, var(--petal), transparent 70%),
+    linear-gradient(180deg, var(--blush), var(--pearl) 40rem) var(--pearl);
+  color: var(--ink);
+  font: 300 15px/1.7 var(--sans);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0 64px;
+}
+::selection { background: var(--petal); color: var(--ink); }
+button, input, textarea, select { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--rose); outline-offset: 2px; }
+.rim { border: 1px solid transparent; background: linear-gradient(var(--white), var(--white)) padding-box, var(--silver-border) border-box; }
+
+/* ---------- ticker + masthead ---------- */
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.home-link { display: inline-block; margin-bottom: 44px; font: 400 .62rem/1 var(--sans); letter-spacing: .28em; text-transform: uppercase; color: var(--silver-dark); text-decoration: none; }
+.home-link:hover { color: var(--rose-deep); }
+.ticker { margin-left: calc(-1 * max(16px, env(safe-area-inset-left, 0px))); margin-right: calc(-1 * max(16px, env(safe-area-inset-right, 0px))); overflow: hidden; white-space: nowrap; background: var(--white); border-bottom: 1px solid var(--silver-light); color: var(--silver-dark); font: 400 10.5px/1 var(--sans); letter-spacing: .38em; text-transform: uppercase; }
+.ticker-track { display: inline-flex; animation: ticker 60s linear infinite; }
+.ticker span { padding: 11px 20px; }
+.ticker .star { color: var(--rose); padding-inline: 0; }
+@keyframes ticker { to { transform: translateX(-50%); } }
+
+.masthead { max-width: 1280px; margin: 0 auto; padding-block: 52px 30px; text-align: center; position: relative; }
+.mh { position: relative; display: inline-block; line-height: 1; margin: 0; font-weight: 300; }
+.mh-halo { position: absolute; left: 50%; top: -30px; width: 108px; height: 32px; transform: translateX(-50%) rotate(-4deg); filter: drop-shadow(0 0 8px #fff) drop-shadow(0 0 14px rgba(236,191,207,.8)); animation: bob 4.5s ease-in-out infinite; }
+@keyframes bob { 50% { transform: translateX(-50%) rotate(-1deg) translateY(-6px); } }
+.mh-word { display: block; font: 300 clamp(2.8rem, 9vw, 5.4rem)/1 var(--display); letter-spacing: .16em; padding-left: .16em; text-transform: uppercase; background: var(--metal); background-size: 100% 220%; -webkit-background-clip: text; background-clip: text; color: transparent; animation: sheen 6s ease-in-out infinite; filter: drop-shadow(0 2px 0 rgba(255,255,255,.9)) drop-shadow(0 6px 18px rgba(201,140,165,.35)); }
+@keyframes sheen { 50% { background-position: 0 100%; } }
+.mh-script { display: block; font: 400 clamp(2rem, 5.5vw, 3.4rem)/1 var(--script); color: var(--rose-deep); margin-top: -.18em; text-shadow: 0 0 20px #fff; }
+.label { font: 400 .66rem/1.4 var(--sans); letter-spacing: .42em; text-transform: uppercase; color: var(--silver-dark); margin: 22px 0 0; }
+.label::before, .label::after { content: "✦"; color: var(--rose); letter-spacing: 0; margin: 0 12px; }
+.head-actions { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-top: 24px; }
+
+.btn { border: 1px solid transparent; background: linear-gradient(rgba(255,255,255,.7), rgba(255,255,255,.7)) padding-box, var(--silver-border) border-box; color: var(--silver-dark); border-radius: 999px; padding: 12px 22px; font: 400 .66rem/1 var(--sans); letter-spacing: .26em; text-transform: uppercase; cursor: pointer; transition: transform .25s, box-shadow .25s, color .2s; }
+.btn:hover { transform: translateY(-1px); color: var(--rose-deep); box-shadow: 0 10px 26px rgba(233,170,195,.4); }
+.btn.primary { color: var(--ink); background: linear-gradient(135deg, #fff 0%, var(--petal) 45%, #fff 70%, var(--rose) 130%) padding-box, var(--silver-border) border-box; box-shadow: var(--glow); }
+.btn.danger-armed { color: var(--rose-deep); background: linear-gradient(var(--petal), var(--petal)) padding-box, var(--silver-border) border-box; }
+
+.banner { max-width: 1280px; margin: 0 auto 24px; padding: 14px 22px; border-radius: 999px; background: linear-gradient(rgba(255,255,255,.85), rgba(255,255,255,.85)) padding-box, var(--silver-border) border-box; border: 1px solid transparent; box-shadow: var(--glow); font-size: .88rem; display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; justify-content: space-between; }
+.banner strong { font: 400 1.5rem/1 var(--script); color: var(--rose-deep); margin-right: 4px; }
+
+/* ---------- mobile toggle ---------- */
+.viewtoggle { display: none; position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; margin: 0 auto 18px; max-width: 420px; border-radius: 999px; padding: 4px; box-shadow: var(--glow); }
+.viewtoggle button { flex: 1; border: 0; background: transparent; padding: 10px 0; border-radius: 999px; font: 400 .66rem/1 var(--sans); letter-spacing: .26em; text-transform: uppercase; color: var(--silver-dark); cursor: pointer; }
+.viewtoggle button[aria-pressed="true"] { background: linear-gradient(135deg, #fff, var(--petal) 50%, var(--rose)); color: var(--ink); }
+
+/* ---------- layout ---------- */
+.layout { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 36px; align-items: start; }
+.form-col { display: grid; gap: 24px; min-width: 0; }
+.preview-col { position: sticky; top: 20px; min-width: 0; display: grid; gap: 14px; }
+
+/* ---------- form cards ---------- */
+.card { border-radius: 28px; padding: 30px 30px 24px; box-shadow: var(--glow); }
+.card-head { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: baseline; justify-content: space-between; margin-bottom: 4px; }
+.card h2 { font: 300 2.2rem/1.05 var(--display); margin: 0; text-wrap: balance; }
+.card h2 em { font: 400 1.15em/1 var(--script); font-style: normal; color: var(--rose-deep); }
+.card .hint { color: var(--muted); font-size: .88rem; margin: 8px 0 18px; max-width: 60ch; }
+.team-card { background: linear-gradient(var(--blush), var(--blush)) padding-box, var(--silver-border) border-box; }
+.eyebrow { font: 400 .62rem/1 var(--sans); letter-spacing: .38em; text-transform: uppercase; color: var(--rose-deep); }
+.eyebrow::before { content: "✦"; color: var(--rose); letter-spacing: 0; margin-right: 10px; }
+
+.chip { font: 400 .62rem/1 var(--sans); letter-spacing: .2em; text-transform: uppercase; padding: 7px 12px; border-radius: 999px; border: 1px solid var(--silver-light); color: var(--silver-dark); background: var(--white); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.chip.done { border-color: transparent; background: var(--petal); color: var(--rose-deep); }
+
+.field { display: grid; gap: 4px; padding-block: 14px; }
+.field + .field { border-top: 1px solid var(--silver-light); }
+.field label, .field .label-t { font: 500 1.22rem/1.3 var(--display); color: var(--ink); }
+.field .sub { font-size: .8rem; color: var(--muted); }
+.field input[type=text], .field textarea, .field select {
+  width: 100%; border: 0; border-bottom: 1px solid var(--silver); background: transparent;
+  padding: 8px 2px; border-radius: 0; resize: none; line-height: 1.55; font-weight: 400; transition: border-color .15s;
+}
+.field ::placeholder { color: #b9aab1; }
+.field select { border: 1px solid var(--silver-light); border-radius: 14px; padding: 9px 12px; background: var(--white); }
+.field textarea { min-height: 2.6em; overflow: hidden; }
+.field input[type=text]:focus, .field textarea:focus { outline: none; border-bottom: 2px solid var(--rose); padding-bottom: 7px; }
+.field.answered > label::after { content: "✦"; color: var(--rose); font-size: .7em; margin-left: 8px; vertical-align: middle; }
+.row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0 22px; }
+.row2 .field + .field { border-top: 0; }
+
+/* photos */
+.drop { display: block; border: 1.5px dashed var(--rose); border-radius: 22px; padding: 26px; text-align: center; color: var(--muted); cursor: pointer; background: var(--blush); transition: background .15s; }
+.drop:hover, .drop.over { background: var(--petal); }
+.drop strong { display: block; font: 400 1.9rem/1.1 var(--script); color: var(--rose-deep); font-weight: 400; }
+.thumbs { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 12px; margin-top: 16px; }
+.thumb { position: relative; aspect-ratio: 4/5; max-width: 100%; padding: 4px; border-radius: 80px 80px 14px 14px; background: var(--silver-border); box-shadow: var(--glow); }
+.thumb img { width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 76px 76px 10px 10px; }
+.thumb .tag { position: absolute; left: 50%; bottom: 40px; transform: translateX(-50%); font: 400 .56rem/1 var(--sans); letter-spacing: .24em; text-transform: uppercase; background: var(--white); color: var(--rose-deep); padding: 5px 9px; border-radius: 999px; }
+.thumb .ctrls { position: absolute; inset: auto 8px 8px 8px; display: flex; gap: 4px; justify-content: space-between; }
+.thumb .ctrls button { border: 0; background: var(--white); color: var(--ink); border-radius: 999px; width: 28px; height: 28px; cursor: pointer; font-size: .95rem; line-height: 1; }
+
+/* ---------- preview ---------- */
+.preview-bar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between; }
+.preview-bar h2 { font: 300 2rem/1 var(--display); margin: 0; }
+.preview-bar h2 em { font: 400 1.2em/1 var(--script); font-style: normal; color: var(--rose-deep); }
+.copy-row { display: flex; flex-wrap: wrap; gap: 8px; }
+.checklist { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; }
+.checklist li { font: 400 .6rem/1 var(--sans); letter-spacing: .18em; text-transform: uppercase; padding: 6px 11px; border-radius: 999px; border: 1px solid var(--silver-light); background: var(--white); color: var(--silver-dark); }
+.checklist li.ok { border-color: transparent; background: var(--petal); color: var(--rose-deep); }
+.checklist li.ok::before { content: "✦ "; }
+
+.sheet { border-radius: 24px; box-shadow: var(--glow), inset 0 0 0 8px #fff, inset 0 0 0 9px var(--silver-light); padding: clamp(26px, 4vw, 52px); max-height: calc(100vh - 180px); overflow-y: auto; }
+
+/* the post itself — matches the A4A blog style */
+.post { font-family: var(--f-post); color: var(--ink); font-size: 15.5px; line-height: 1.6; max-width: 62ch; margin: 0 auto; }
+.post h1 { font-size: clamp(1.45rem, 2.6vw, 1.9rem); line-height: 1.3; font-weight: 700; margin: 0 0 22px; text-wrap: balance; }
+.post p { margin: 0 0 18px; }
+.post .qa { margin: 0 0 20px; }
+.post .qa h3 { font-size: 1em; font-weight: 700; margin: 0 0 2px; }
+.post .qa p { margin: 0; }
+.post h2 { font-size: 1.08em; font-weight: 700; margin: 34px 0 14px; }
+.post h4 { font-size: 1em; font-weight: 700; margin: 0 0 6px; }
+.post .explain { font-weight: 700; }
+.post a { color: var(--rose-deep); }
+.post .photos { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 10px; margin: 26px 0; }
+.post .photos img { width: 100%; aspect-ratio: 4/5; object-fit: cover; border-radius: 4px; display: block; }
+.post .cover { margin: 4px 0 26px; }
+.post .cover img { width: 100%; max-height: 520px; object-fit: cover; border-radius: 4px; display: block; }
+.post ul { padding-left: 1.2em; margin: 0 0 18px; }
+.post .empty { color: var(--muted); font-style: italic; }
+
+.toast { position: fixed; left: 50%; bottom: calc(24px + env(safe-area-inset-bottom, 0px)); transform: translate(-50%, 20px); opacity: 0; background: var(--white); color: var(--ink); border: 1px solid var(--rose); box-shadow: var(--glow); padding: 11px 22px; border-radius: 999px; font-size: .85rem; transition: opacity .2s, transform .2s; pointer-events: none; z-index: 20; max-width: calc(100% - 32px); text-align: center; }
+.toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+.codebox { width: 100%; min-height: 160px; font: 12px/1.4 ui-monospace, Menlo, monospace; border: 1px solid var(--silver-light); border-radius: 14px; padding: 10px; background: var(--white); }
+
+footer.note { max-width: 1280px; margin: 48px auto 0; text-align: center; display: grid; gap: 6px; justify-items: center; }
+footer.note .xoxo { font: 400 2.4rem/1 var(--script); color: var(--rose-deep); }
+footer.note p { margin: 0; color: var(--muted); font-size: .82rem; }
+footer.note .addr { user-select: all; color: var(--ink); border-bottom: 1px solid var(--rose); letter-spacing: .08em; }
+
+
+/* ---------- send + inbox ---------- */
+.send-card { text-align: center; }
+.send-card .card-head { justify-content: center; }
+.send-card .hint { margin-inline: auto; }
+.send-status { font-size: .85rem; color: var(--muted); margin: 14px auto 0; max-width: 52ch; }
+.send-status.ok { color: var(--rose-deep); }
+.btn:disabled { opacity: .5; cursor: default; transform: none; box-shadow: none; }
+.btn .count { display: inline-block; min-width: 1.7em; margin-left: 8px; padding: 3px 6px; border-radius: 999px; background: var(--rose-deep); color: var(--white); letter-spacing: 0; font-variant-numeric: tabular-nums; }
+
+.inbox { max-width: 1080px; margin: 0 auto; }
+.inbox-head { display: flex; flex-wrap: wrap; gap: 12px 20px; align-items: end; justify-content: space-between; margin-bottom: 22px; }
+.inbox-head h2 { font: 300 clamp(2.4rem, 5vw, 3.4rem)/1 var(--display); margin: 0; }
+.inbox-head h2 em { font: 400 1.15em/1 var(--script); font-style: normal; color: var(--rose-deep); }
+.filters { display: flex; gap: 6px; flex-wrap: wrap; }
+.filters button { border: 1px solid var(--silver-light); background: var(--white); color: var(--silver-dark); border-radius: 999px; padding: 8px 14px; font: 400 .62rem/1 var(--sans); letter-spacing: .22em; text-transform: uppercase; cursor: pointer; }
+.filters button[aria-pressed="true"] { background: var(--petal); border-color: transparent; color: var(--rose-deep); }
+.subs { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 20px; }
+.sub-card { border-radius: 26px; padding: 18px 20px 18px; box-shadow: var(--glow); display: grid; grid-template-columns: 64px minmax(0,1fr); gap: 6px 16px; align-items: start; }
+.sub-pic { grid-row: span 2; width: 64px; height: 80px; border-radius: 40px 40px 10px 10px; object-fit: cover; background: radial-gradient(circle at 50% 30%, #fff, var(--petal) 70%); display: grid; place-items: center; font: 300 1.6rem/1 var(--display); color: var(--rose-deep); }
+.sub-name { font: 400 1.6rem/1.1 var(--display); margin: 0; overflow-wrap: anywhere; }
+.sub-meta { font-size: .8rem; color: var(--muted); margin: 2px 0 0; overflow-wrap: anywhere; }
+.sub-stats { grid-column: 2; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.sub-actions { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; padding-top: 12px; border-top: 1px solid var(--silver-light); }
+.sub-actions .btn { padding: 10px 14px; font-size: .58rem; }
+.chip.new { background: var(--rose-deep); color: var(--white); border-color: transparent; }
+.empty-inbox { text-align: center; padding: 56px 24px; border-radius: 28px; box-shadow: var(--glow); }
+.empty-inbox .script { font: 400 2.6rem/1 var(--script); color: var(--rose-deep); margin: 0 0 8px; }
+.empty-inbox p { margin: 0 auto; max-width: 46ch; color: var(--muted); }
+
+@media (max-width: 900px) {
+  .layout { grid-template-columns: minmax(0,1fr); }
+  .viewtoggle { display: flex; }
+  .preview-col { position: static; }
+  .sheet { max-height: none; }
+  .layout[data-view="form"] .preview-col { display: none; }
+  .layout[data-view="post"] .form-col { display: none; }
+}
+@media (max-width: 520px) {
+  .row2 { grid-template-columns: 1fr; }
+  .row2 .field + .field { border-top: 1px solid var(--silver-light); }
+  .card { padding: 24px 20px 18px; border-radius: 24px; }
+  .masthead { padding-block: 44px 22px; }
+  .mh-word { letter-spacing: .1em; padding-left: .1em; }
+  .banner { border-radius: 24px; }
+}
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
+</style>
+</head>
+<body>
+
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="silver" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f4f4f8"/><stop offset=".45" stop-color="#b9b9c8"/><stop offset=".55" stop-color="#e8e8ef"/><stop offset="1" stop-color="#a3a3b5"/>
+    </linearGradient>
+    <symbol id="halo" viewBox="0 0 100 30">
+      <ellipse cx="50" cy="15" rx="44" ry="10" fill="none" stroke="url(#silver)" stroke-width="3.5"/>
+      <ellipse cx="50" cy="15" rx="44" ry="10" fill="none" stroke="#fff" stroke-width="1.2" stroke-dasharray="14 70" stroke-linecap="round"/>
+    </symbol>
+  </defs>
+</svg>
+
+<div class="ticker" aria-hidden="true"><div class="ticker-track" id="ticker"></div></div>
+
+<header class="masthead">
+  <a class="home-link" href="./">← Angels for Aid</a><br>
+  <h1 class="mh">
+    <svg class="mh-halo"><use href="#halo"/></svg>
+    <span class="mh-word">Angels</span>
+    <span class="mh-script">for aid</span>
+  </h1>
+  <p class="label">Be an Angel Spotted</p>
+  <div class="head-actions team-only" hidden>
+    <button class="btn" id="btn-example" type="button">Load example</button>
+    <button class="btn" id="btn-clear" type="button">Clear form</button>
+  </div>
+</header>
+
+<div class="banner" id="example-banner" hidden>
+  <span><strong>This is an example.</strong> Phoenix’s answers are filled in so you can see how the post comes together. Clear the form to add your own.</span>
+  <button class="btn" id="btn-clear-2" type="button">Start my own</button>
+</div>
+
+<div class="viewtoggle rim" role="group" aria-label="View">
+  <button type="button" id="v-form" aria-pressed="true">Questions</button>
+  <button type="button" id="v-post" aria-pressed="false">Post preview</button>
+</div>
+
+<main class="layout" id="layout" data-view="form">
+  <form class="form-col" id="form" autocomplete="off">
+
+    <section class="card rim">
+      <div class="card-head"><h2>Introduction</h2><span class="chip" id="chip-intro">0 / 2</span></div>
+      <p class="hint">Welcome to Angels for Aid, a start-up nonprofit combining beauty, lifestyle and influencers with advocacy, intervention and humanitarian aid. Answer as much or as little as you like. Long answers are welcome, though not everything may fit on the blog.</p>
+      <div class="field"><label for="name">Name</label><span class="sub">First and last, only first, or a nickname</span><input type="text" id="name" data-key="name" placeholder="Phoenix"></div>
+      <div class="row2">
+        <div class="field"><label for="location">Location</label><span class="sub">State, country, whatever’s comfortable</span><input type="text" id="location" data-key="location" placeholder="North Wales"></div>
+        <div class="field"><label for="instagram">Instagram</label><span class="sub">Optional</span><input type="text" id="instagram" data-key="instagram" placeholder="@yourhandle"></div>
+      </div>
+      <div class="field"><label for="occupation">What do you do?</label><span class="sub">Job or education, include your major or aspired major. Finish the sentence “I am currently…”</span><input type="text" id="occupation" data-key="occupation" placeholder="a mass media arts student at Clark Atlanta University"></div>
+    </section>
+
+    <section class="card rim">
+      <div class="card-head"><h2>Beauty, lifestyle <em>&amp; fashion</em></h2><span class="chip" id="chip-beauty">0 / 3</span></div>
+      <p class="hint">Answer at least 3. Skip any you like.</p>
+      <div id="beauty-qs"></div>
+    </section>
+
+    <section class="card rim">
+      <div class="card-head"><h2>Your <em>cause</em></h2><span class="chip" id="chip-cause">0 / 2</span></div>
+      <p class="hint">Tell us the cause that resonates with you, then answer at least 2 of the questions. A4A will explain the cause in more detail and link organizations that help.</p>
+      <div class="field"><label for="cause">Cause</label><span class="sub">For example: mental health, women’s safety, environmentalism</span><input type="text" id="cause" data-key="cause" placeholder="Environmentalism"></div>
+      <div class="field"><label for="connection">Your connection to it</label><span class="sub">Optional. Introduce the cause in your own words.</span><textarea id="connection" data-key="connection" rows="2"></textarea></div>
+      <div id="cause-qs"></div>
+    </section>
+
+    <section class="card rim">
+      <div class="card-head"><h2>Photos</h2><span class="chip" id="chip-photos">0 / 4–8</span></div>
+      <p class="hint">4–8 photos of yourself: selfies, poses, your fashion. Pictures of products you mentioned or of your cause are welcome too. The first photo is the cover.</p>
+      <label class="drop" id="drop" for="file"><strong>Add photos</strong><br>Tap to choose, or drop images here</label>
+      <input type="file" id="file" accept="image/*" multiple hidden>
+      <div class="thumbs" id="thumbs"></div>
+    </section>
+
+    <section class="card rim send-card" id="send-card">
+      <div class="card-head"><h2>All <em>done?</em></h2></div>
+      <p class="hint">Send your answers and photos straight to the Angels for Aid team. You can come back, edit, and send again any time.</p>
+      <label class="hp" aria-hidden="true">Leave this empty <input type="text" id="website" tabindex="-1" autocomplete="off"></label>
+      <button class="btn primary" type="button" id="btn-send">Send to Angels for Aid</button>
+      <p class="send-status" id="send-status">Your answers and photos go to the A4A team only.</p>
+    </section>
+
+    <section class="card rim team-card team-only" hidden>
+      <span class="eyebrow">For the A4A team</span>
+      <div class="card-head"><h2>Load a <em>submission</em></h2></div>
+      <p class="hint">In the Google Sheet, copy the cell in the “Submission code” column for one angel and paste it here. Their answers and photos load into the form.</p>
+      <div class="field"><label for="paste">Submission code</label><textarea id="paste" rows="2" placeholder='{"answers":…}'></textarea></div>
+      <button class="btn primary" type="button" id="btn-load">Load answers</button>
+    </section>
+
+    <section class="card rim team-card team-only" hidden>
+      <span class="eyebrow">For the A4A team</span>
+      <div class="card-head"><h2>Finishing <em>touches</em></h2></div>
+      <p class="hint">Angels can skip this part.</p>
+      <div class="field">
+        <label for="headline">Headline quote</label>
+        <span class="sub">Picked from the answers. Choose another or write your own.</span>
+        <select id="headline" data-key="headline"></select>
+        <input type="text" id="headlineCustom" data-key="headlineCustom" placeholder="Write a custom headline quote" hidden>
+      </div>
+      <div class="field"><label for="adjective">Describe this angel in one word</label><span class="sub">Used in “Introducing Nala, an insightful angel…”</span><input type="text" id="adjective" data-key="adjective" placeholder="insightful"></div>
+      <div class="field"><label for="intro">Angel Spotted intro</label><span class="sub">Written for you from the introduction. Edit it here if you want different wording.</span><textarea id="intro" data-key="intro" rows="2"></textarea></div>
+      <div class="field">
+        <label for="explainPreset">A4A’s explanation of the cause</label>
+        <span class="sub">Start from a saved description or write a new one.</span>
+        <select id="explainPreset"><option value="">Use a saved description…</option></select>
+        <textarea id="explain" data-key="explain" rows="3"></textarea>
+      </div>
+      <div class="field"><label for="orgs">Organizations that aid the cause</label><span class="sub">One per line: Name, then a link. Example: Mind, https://www.mind.org.uk</span><textarea id="orgs" data-key="orgs" rows="2"></textarea></div>
+    </section>
+  </form>
+
+  <aside class="preview-col" aria-label="Post preview">
+    <div class="preview-bar">
+      <h2>The <em>post</em></h2>
+      <div class="copy-row">
+        <button class="btn primary" type="button" id="copy-rich">Copy post</button>
+        <button class="btn" type="button" id="copy-text">Copy as text</button>
+        <button class="btn" type="button" id="copy-html">Copy HTML</button>
+      </div>
+    </div>
+    <ul class="checklist" id="checklist"></ul>
+    <div class="sheet rim"><article class="post" id="post"></article></div>
+    <textarea class="codebox" id="codebox" readonly hidden aria-label="Post HTML"></textarea>
+  </aside>
+</main>
+
+<footer class="note"><span class="xoxo">xoxo</span><p>Your draft is saved in this browser only.</p><p>Questions? Reach out to <span class="addr">angels4aid@gmail.com</span></p></footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+const BEAUTY = [
+  "How would you describe your sense of style? Or.. Describe your sense of style in 3 words.",
+  "Favorite thing you own?",
+  "Who is your fashion role model?",
+  "Favorite step of your makeup routine?",
+  "What isn’t a trend yet that should (or will) be?",
+  "One trend that should die?",
+  "Where do you shop?",
+  "Any underrated products or brands?",
+  "Most worn thing in your closet?",
+  "Any fashion or beauty items with ancestral significance?",
+  "Any tips for confidence?",
+  "One niche self-care tip that elevates your hygiene or sense of self?",
+  "What do you think is the most important step of a makeup routine?",
+  "What do you think is the most important part of an outfit?"
+];
+const CAUSE = [
+  "What initially sparked your interest in this cause?",
+  "Was there a particular event, experience, or person that influenced your interest?",
+  "Why does this matter to you personally?",
+  "Has your perspective on humanitarian suffering changed because of your involvement or interest?",
+  "What have you learned about yourself through being interested in this cause?",
+  "Why do you think humanitarian aid is important in today’s world?",
+  "What are the biggest challenges associated with this cause?",
+  "What role do you think individuals can play in addressing humanitarian causes?",
+  "How has learning about this cause influenced your future goals?"
+];
+const PRESETS = {
+  "Environmentalism and eco-conscious travel": "Environmentalism and environmentally conscious travel focus on protecting the planet through sustainable choices. By reducing waste, supporting local communities, and choosing eco-friendly transportation, we can explore the world responsibly while preserving its natural beauty for future generations.",
+  "Environmental protection": "Environmental protection is the practice of preserving natural resources and reducing damage to the environment. It includes reducing pollution, protecting forests and wildlife, conserving water and energy, and addressing climate change. Governments, organizations, and individuals can help through renewable energy, recycling, conservation programs, and environmental laws. Overall, environmental protection aims to create a healthier planet and ensure that natural resources remain available for future generations.",
+  "Mental health": "Mental health is an important humanitarian concern because everyone deserves access to emotional support and proper care. Stress, trauma, discrimination, and lack of resources can affect a person's well-being and quality of life. Raising awareness and improving access to mental health services helps people feel supported, understood, and valued.",
+  "Human rights": "Human rights advocacy is a humanitarian concern focused on protecting the basic rights and freedoms of every person. It involves speaking out against discrimination, injustice, and abuse while promoting equality, dignity, and fair treatment for all.",
+  "Women’s safety": "Violence against women is a major humanitarian issue that affects millions of women and girls worldwide. It includes domestic abuse, sexual violence, human trafficking, forced marriage, and gender-based discrimination. These violations threaten basic human rights, limit access to education and economic opportunities, and cause lasting physical and psychological harm. Addressing this issue requires stronger legal protections, access to support services, public education, and international cooperation to ensure women and girls can live safely and with dignity.",
+  "Feminism": "Feminism is a social, political, and intellectual movement that advocates for gender equality and equal rights for all people, regardless of gender. It seeks to eliminate discrimination, sexism, and gender-based violence in society. Feminism addresses inequalities in areas such as education, employment, politics, healthcare, and the legal system. It also challenges traditional gender roles and expectations that limit people's freedom and opportunities.",
+  "Child health": "Child safety and wellbeing is a major humanitarian concern because every child deserves to grow up in a safe, healthy, and supportive environment. Violence, neglect, poverty, and lack of access to education and healthcare threaten children's rights and development. Protecting children ensures they have the opportunity to live healthy, secure, and fulfilling lives."
+};
+const EXAMPLE = {
+  name: "Phoenix", location: "North Wales", occupation: "", instagram: "", adjective: "educated",
+  cause: "Environmentalism", connection: "",
+  b0: "My sense of style is one of variety, I love to experiment with makeup and colours focusing on what I can find in my local charity shop! I find that dressing up and wearing my makeup really motivates me for the day!",
+  b1: "Probably my camera, I bring it everywhere! It’s just a little canon camera which is good enough and helps me to capture those moments which mean the most.",
+  b2: "My fashion role model is definitely Helena Bonham Carter!",
+  b3: "My eyeliner I love a swirl and a dot it makes me feel so whimsy!",
+  b5: "Very controversial but I think leggings need to go!",
+  b6: "I shop in charity shops! Typically picking up items from the M&S collection second hand as they are the loveliest material.",
+  b10: "My tips for confidence would ultimately be to stop caring about what everyone else thinks! It doesn’t matter if you get a weird look on the street or if someone thinks you look strange, be yourself and be confident in who you are!",
+  c0: "I have held an interest in the cause for the longest time, I don’t want to watch the world die and would love to be a part of the change!",
+  c1: "My interest in changing how things are was David Attenborough’s more recent documentary about life on our planet! This documentary really stuck with me because of the sadness he conveyed in the cinematography and vocabulary he used to show his devastation about the way the world is going.",
+  c5: "Humanitarian aid is becoming increasingly important as the climate crisis continues to threaten the lives of thousands. Those who feel they can’t speak often have the most important stories to say.",
+  c6: "The biggest challenges with this cause are, blind sightedness about the reality of what’s happening, unwillingness to work towards a shared cause, uncaring nature for the wildlife and people who cannot speak for themselves and the thousands who don’t want to listen to the truth about the crises",
+  explain: PRESETS["Environmental protection"],
+  orgs: "WWF, https://www.worldwildlife.org\nSurfers Against Sewage, https://www.sas.org.uk",
+  headline: "auto", __example: true
+};
+
+const $ = s => document.querySelector(s);
+const STORE = "a4a-post-draft-v1";
+let state = {};
+let photos = []; // {src}
+let introTouched = false;
+
+/* ---------- build question fields ---------- */
+function makeField(key, label) {
+  const d = document.createElement("div");
+  d.className = "field";
+  d.innerHTML = `<label for="${key}"></label><textarea id="${key}" data-key="${key}" rows="1"></textarea>`;
+  d.querySelector("label").textContent = label;
+  return d;
+}
+BEAUTY.forEach((q, i) => $("#beauty-qs").appendChild(makeField("b" + i, q)));
+CAUSE.forEach((q, i) => $("#cause-qs").appendChild(makeField("c" + i, q)));
+Object.keys(PRESETS).forEach(k => { const o = document.createElement("option"); o.value = k; o.textContent = k; $("#explainPreset").appendChild(o); });
+
+/* ---------- helpers ---------- */
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const val = k => (state[k] || "").trim();
+const firstName = () => (val("name").split(/\s+/)[0] || "Angel");
+const possessive = n => n + (/s$/i.test(n) ? "’" : "’s");
+function quote(s) {
+  s = s.trim().replace(/^["“”']+|["“”']+$/g, "").trim();
+  return s ? "“" + s + "”" : "";
+}
+function autoGrow(t) { t.style.height = "auto"; t.style.height = t.scrollHeight + 2 + "px"; }
+function article(word) { return /^[aeiou]/i.test(word) ? "an" : "a"; }
+
+function autoIntro() {
+  const name = val("name"), first = firstName(), loc = val("location"), occ = val("occupation"), adj = val("adjective");
+  if (!name) return "";
+  const desc = adj ? `${article(adj)} ${adj} angel` : "an angel";
+  let s = `Introducing ${name}, ${desc}${loc ? " located in " + loc : ""}.`;
+  if (occ) s += ` ${first} is currently ${occ.replace(/^(i am|i'm|currently)\s+/i, "").replace(/\.$/, "")}.`;
+  return s;
+}
+
+function answered(prefix, n) { let c = 0; for (let i = 0; i < n; i++) if (val(prefix + i)) c++; return c; }
+
+/* ---------- headline candidates ---------- */
+function candidates() {
+  const sources = [];
+  for (let i = 0; i < CAUSE.length; i++) sources.push({ t: val("c" + i), w: 3 });
+  sources.push({ t: val("connection"), w: 3 });
+  for (let i = 0; i < BEAUTY.length; i++) sources.push({ t: val("b" + i), w: 1 });
+  const out = [], seen = new Set();
+  sources.forEach(({ t, w }) => {
+    (t.match(/[^.!?]+[.!?]*["”]?/g) || []).forEach(raw => {
+      const s = raw.trim().replace(/^["“”]+|["“”]+$/g, "").trim();
+      const words = s.split(/\s+/).length;
+      if (words < 6 || words > 40 || seen.has(s)) return;
+      seen.add(s);
+      let score = w;
+      if (words >= 9 && words <= 26) score += 2;
+      if (/\b(i want|i believe|deserve|world|everyone|no one|every|matters|free|need)\b/i.test(s)) score += 2;
+      if (/!/.test(s) && s === s.toUpperCase()) score += 1;
+      out.push({ s, score });
+    });
+  });
+  return out.sort((a, b) => b.score - a.score).slice(0, 14).map(o => o.s);
+}
+function refreshHeadlineOptions() {
+  const sel = $("#headline"), cur = state.headline || "auto";
+  const list = candidates();
+  sel.innerHTML = "";
+  const add = (v, t) => { const o = document.createElement("option"); o.value = v; o.textContent = t; sel.appendChild(o); };
+  add("auto", list.length ? "Auto: " + trim(list[0], 70) : "Auto (answer a few questions first)");
+  list.forEach(s => add(s, trim(s, 90)));
+  add("custom", "Write my own…");
+  sel.value = [...sel.options].some(o => o.value === cur) ? cur : "auto";
+  $("#headlineCustom").hidden = sel.value !== "custom";
+}
+const trim = (s, n) => s.length > n ? s.slice(0, n - 1) + "…" : s;
+function headline() {
+  const h = state.headline || "auto";
+  if (h === "custom") return val("headlineCustom");
+  if (h === "auto") return candidates()[0] || "";
+  return h;
+}
+
+function parseOrgs() {
+  return val("orgs").split("\n").map(l => l.trim()).filter(Boolean).map(l => {
+    const m = l.match(/(https?:\/\/\S+|www\.\S+)/i);
+    const url = m ? (m[1].startsWith("http") ? m[1] : "https://" + m[1]) : "";
+    const name = (m ? l.replace(m[1], "") : l).replace(/[\s,–—\-:|]+$/, "").trim() || url;
+    return { name, url };
+  });
+}
+function igHandle() { const h = val("instagram").replace(/^@+/, "").replace(/^https?:\/\/(www\.)?instagram\.com\//i, "").replace(/\/.*$/, ""); return h; }
+
+/* ---------- post builder ---------- */
+function buildPost(withPhotos = true) {
+  const first = firstName(), h = headline(), intro = val("intro") || autoIntro();
+  const qa = (q, a) => `<div class="qa"><h3>${esc(q)}</h3><p>${esc(quote(a))}</p></div>`;
+  let html = "";
+  if (h) html += `<h1>${esc(quote(h))}</h1>`;
+  if (intro) html += `<p><strong>Angel Spotted:</strong> ${esc(intro)}</p>`;
+  if (withPhotos && photos[0]) html += `<figure class="cover" style="margin:0 0 24px"><img src="${photos[0].src}" alt="${esc(first)}" style="max-width:100%"></figure>`;
+  BEAUTY.forEach((q, i) => { if (val("b" + i)) html += qa(q, val("b" + i)); });
+  const rest = photos.slice(1);
+  if (withPhotos && rest.length) html += `<div class="photos">${rest.map(p => `<img src="${p.src}" alt="${esc(first)}" style="max-width:100%">`).join("")}</div>`;
+  if (val("cause")) html += `<h2>${esc(possessive(first))} Cause: ${esc(val("cause"))}</h2>`;
+  if (val("explain")) html += `<h4>A4A’s explanation:</h4><p class="explain"><strong>${esc(val("explain"))}</strong></p>`;
+  if (val("connection")) html += `<h4>${esc(possessive(first))} Connection:</h4><p>${esc(quote(val("connection")))}</p>`;
+  CAUSE.forEach((q, i) => { if (val("c" + i)) html += qa(q, val("c" + i)); });
+  const orgs = parseOrgs();
+  if (orgs.length) html += `<h4>Organizations that aid this cause:</h4><ul>${orgs.map(o => `<li>${o.url ? `<a href="${esc(o.url)}">${esc(o.name)}</a>` : esc(o.name)}</li>`).join("")}</ul>`;
+  const ig = igHandle();
+  if (ig) html += `<p>Find ${esc(first)} on Instagram at <a href="https://www.instagram.com/${esc(ig)}">@${esc(ig)}</a></p>`;
+  return html;
+}
+function buildText() {
+  const first = firstName(), h = headline(), intro = val("intro") || autoIntro(), L = [];
+  if (h) L.push(quote(h), "");
+  if (intro) L.push("Angel Spotted: " + intro, "");
+  BEAUTY.forEach((q, i) => { if (val("b" + i)) L.push(q, quote(val("b" + i)), ""); });
+  if (val("cause")) L.push(`${possessive(first)} Cause: ${val("cause")}`, "");
+  if (val("explain")) L.push("A4A’s explanation:", val("explain"), "");
+  if (val("connection")) L.push(`${possessive(first)} Connection:`, quote(val("connection")), "");
+  CAUSE.forEach((q, i) => { if (val("c" + i)) L.push(q, quote(val("c" + i)), ""); });
+  const orgs = parseOrgs();
+  if (orgs.length) { L.push("Organizations that aid this cause:"); orgs.forEach(o => L.push("• " + o.name + (o.url && o.url !== o.name ? " – " + o.url : ""))); L.push(""); }
+  if (igHandle()) L.push(`Find ${first} on Instagram at @${igHandle()}`);
+  return L.join("\n").trim();
+}
+
+/* ---------- render ---------- */
+function render() {
+  const nIntro = ["name", "location"].filter(val).length;
+  const nB = answered("b", BEAUTY.length), nC = answered("c", CAUSE.length), nP = photos.length;
+  const chip = (id, text, done) => { const c = $(id); c.textContent = text; c.classList.toggle("done", done); };
+  chip("#chip-intro", nIntro >= 2 ? "Done ✓" : "Name & location", nIntro >= 2);
+  chip("#chip-beauty", nB >= 3 ? `${nB} answered ✓` : `${nB} of 3 answered`, nB >= 3);
+  chip("#chip-cause", nC >= 2 ? `${nC} answered ✓` : `${nC} of 2 answered`, nC >= 2 && !!val("cause"));
+  chip("#chip-photos", `${nP} of 4–8 photos`, nP >= 4 && nP <= 8);
+
+  document.querySelectorAll("[data-key]").forEach(el => {
+    const f = el.closest(".field"); if (f && el.tagName !== "SELECT") f.classList.toggle("answered", !!val(el.dataset.key));
+  });
+
+  const intro = $("#intro");
+  if (!introTouched) { intro.value = autoIntro(); }
+  autoGrow(intro);
+
+  const checks = [
+    ["Name & location", nIntro >= 2], ["3+ style answers", nB >= 3], ["Cause", !!val("cause")],
+    ["2+ cause answers", nC >= 2], ["A4A explanation", !!val("explain")], ["4–8 photos", nP >= 4 && nP <= 8]
+  ];
+  $("#checklist").innerHTML = checks.map(([t, ok]) => `<li class="${ok ? "ok" : ""}">${t}</li>`).join("");
+
+  const html = buildPost(true);
+  $("#post").innerHTML = html || `<p class="empty">Start answering the questions and the post will write itself here.</p>`;
+  $("#example-banner").hidden = !state.__example;
+}
+
+/* ---------- state ---------- */
+function save() {
+  try { localStorage.setItem(STORE, JSON.stringify({ state, introTouched, photos })); }
+  catch (e) { try { localStorage.setItem(STORE, JSON.stringify({ state, introTouched, photos: [] })); } catch (_) {} }
+}
+function applyState(s, touched = false, ph = []) {
+  state = { ...s }; introTouched = touched; photos = ph;
+  document.querySelectorAll("[data-key]").forEach(el => {
+    if (el.id === "headline") return;
+    el.value = state[el.dataset.key] || "";
+    if (el.tagName === "TEXTAREA") autoGrow(el);
+  });
+  if (touched) $("#intro").value = state.intro || "";
+  refreshHeadlineOptions();
+  renderThumbs(); render();
+}
+
+let hlTimer;
+$("#form").addEventListener("input", e => {
+  const el = e.target, k = el.dataset && el.dataset.key;
+  if (!k) return;
+  state[k] = el.value;
+  if (state.__example) delete state.__example;
+  if (k === "intro") { introTouched = el.value.trim() !== "" && el.value !== autoIntro(); if (!introTouched) state.intro = ""; }
+  if (el.tagName === "TEXTAREA") autoGrow(el);
+  if (k === "headline") $("#headlineCustom").hidden = el.value !== "custom";
+  if (/^[bc]\d|connection$/.test(k)) { clearTimeout(hlTimer); hlTimer = setTimeout(refreshHeadlineOptions, 400); }
+  render(); save();
+});
+$("#headline").addEventListener("change", e => { state.headline = e.target.value; $("#headlineCustom").hidden = e.target.value !== "custom"; render(); save(); });
+$("#explainPreset").addEventListener("change", e => {
+  const k = e.target.value; if (!k) return;
+  state.explain = PRESETS[k]; $("#explain").value = PRESETS[k]; autoGrow($("#explain"));
+  if (!val("cause")) { state.cause = k; $("#cause").value = k; }
+  e.target.value = ""; render(); save();
+});
+$("#form").addEventListener("submit", e => e.preventDefault());
+
+/* ---------- photos ---------- */
+function shrink(file) {
+  return new Promise((res, rej) => {
+    const r = new FileReader();
+    r.onerror = rej;
+    r.onload = () => {
+      const img = new Image();
+      img.onerror = rej;
+      img.onload = () => {
+        const max = 1400, k = Math.min(1, max / Math.max(img.width, img.height));
+        const c = document.createElement("canvas");
+        c.width = Math.round(img.width * k); c.height = Math.round(img.height * k);
+        c.getContext("2d").drawImage(img, 0, 0, c.width, c.height);
+        res(c.toDataURL("image/jpeg", .85));
+      };
+      img.src = r.result;
+    };
+    r.readAsDataURL(file);
+  });
+}
+async function addFiles(files) {
+  const list = [...files].filter(f => f.type.startsWith("image/"));
+  if (!list.length) return;
+  const room = 8 - photos.length;
+  if (room <= 0) { toast("8 photos is the most a post can hold. Remove one to add another."); return; }
+  for (const f of list.slice(0, room)) { try { photos.push({ src: await shrink(f) }); } catch (_) { toast("One image couldn’t be read. Try a JPG or PNG."); } }
+  if (list.length > room) toast(`Added ${room}. A post holds up to 8 photos.`);
+  renderThumbs(); render(); save();
+}
+function renderThumbs() {
+  const t = $("#thumbs"); t.innerHTML = "";
+  photos.forEach((p, i) => {
+    const d = document.createElement("div"); d.className = "thumb";
+    d.innerHTML = `<img src="${p.src}" alt="Photo ${i + 1}">${i === 0 ? '<span class="tag">Cover</span>' : ""}
+      <div class="ctrls"><button type="button" data-act="left" aria-label="Move earlier" ${i === 0 ? "hidden" : ""}>‹</button><button type="button" data-act="del" aria-label="Remove photo">×</button></div>`;
+    d.querySelector('[data-act="del"]').onclick = () => { photos.splice(i, 1); renderThumbs(); render(); save(); };
+    d.querySelector('[data-act="left"]').onclick = () => { [photos[i - 1], photos[i]] = [photos[i], photos[i - 1]]; renderThumbs(); render(); save(); };
+    t.appendChild(d);
+  });
+}
+$("#file").addEventListener("change", e => { addFiles(e.target.files); e.target.value = ""; });
+const drop = $("#drop");
+["dragenter", "dragover"].forEach(ev => drop.addEventListener(ev, e => { e.preventDefault(); drop.classList.add("over"); }));
+["dragleave", "drop"].forEach(ev => drop.addEventListener(ev, e => { e.preventDefault(); drop.classList.remove("over"); }));
+drop.addEventListener("drop", e => addFiles(e.dataTransfer.files));
+
+/* ---------- copy ---------- */
+let toastTimer;
+function toast(msg) { const t = $("#toast"); t.textContent = msg; t.classList.add("show"); clearTimeout(toastTimer); toastTimer = setTimeout(() => t.classList.remove("show"), 2600); }
+function selectPost() { const r = document.createRange(); r.selectNodeContents($("#post")); const s = getSelection(); s.removeAllRanges(); s.addRange(r); }
+$("#copy-rich").addEventListener("click", () => {
+  const html = buildPost(true), text = buildText();
+  const fallback = () => { selectPost(); let ok = false; try { ok = document.execCommand("copy"); } catch (_) {} toast(ok ? "Post copied. Paste it into your blog editor." : "The post is selected. Press Ctrl+C (or ⌘C) to copy."); };
+  try {
+    if (window.ClipboardItem && navigator.clipboard && navigator.clipboard.write) {
+      navigator.clipboard.write([new ClipboardItem({ "text/html": new Blob([html], { type: "text/html" }), "text/plain": new Blob([text], { type: "text/plain" }) })])
+        .then(() => toast("Post copied with formatting. Paste it into your blog editor."), fallback);
+    } else fallback();
+  } catch (_) { fallback(); }
+});
+function copyPlain(str, okMsg) {
+  const box = $("#codebox");
+  const fallback = () => { box.hidden = false; box.value = str; box.focus(); box.select(); toast("Selected below. Press Ctrl+C (or ⌘C) to copy."); };
+  try { navigator.clipboard.writeText(str).then(() => { box.hidden = true; toast(okMsg); }, fallback); } catch (_) { fallback(); }
+}
+$("#copy-text").addEventListener("click", () => copyPlain(buildText(), "Text copied. Add the photos in your blog editor."));
+$("#copy-html").addEventListener("click", () => copyPlain(buildPost(true), "HTML copied, photos included."));
+
+/* ---------- clear / example ---------- */
+let armed = null;
+function armClear(btn) {
+  if (armed === btn) { armed = null; btn.classList.remove("danger-armed"); btn.textContent = btn.dataset.label; newAngel(); save(); toast("Form cleared. Ready for a new angel."); return; }
+  if (state.__example) { newAngel(); save(); toast("Ready for a new angel."); return; }
+  armed = btn; btn.dataset.label = btn.textContent; btn.textContent = "Tap again to clear"; btn.classList.add("danger-armed");
+  setTimeout(() => { if (armed === btn) { armed = null; btn.classList.remove("danger-armed"); btn.textContent = btn.dataset.label; } }, 3500);
+}
+$("#btn-clear").addEventListener("click", e => armClear(e.currentTarget));
+$("#btn-clear-2").addEventListener("click", e => armClear(e.currentTarget));
+$("#btn-example").addEventListener("click", () => { if (isTeam) closeEditing(); applyState(EXAMPLE); save(); });
+
+/* ---------- mobile view toggle ---------- */
+function setView(v) { $("#layout").dataset.view = v; $("#v-form").setAttribute("aria-pressed", v === "form"); $("#v-post").setAttribute("aria-pressed", v === "post"); window.scrollTo({ top: 0 }); }
+$("#v-form").onclick = () => setView("form");
+$("#v-post").onclick = () => setView("post");
+
+/* ---------- ticker ---------- */
+(function () {
+  const words = ["Angel Spotted", "Beauty", "Lifestyle", "Fashion", "Advocacy", "Humanitarian aid", "Where fashion meets politics"];
+  const one = words.map(w => `<span>${w}</span><span class="star">✦</span>`).join("");
+  $("#ticker").innerHTML = one + one + one + one;
+})();
+
+/* ---------- sending (Google Sheet via Apps Script) ---------- */
+// Paste your Apps Script web app URL here (see SPOTTED-SETUP.md).
+const SCRIPT_URL = "PASTE_YOUR_APPS_SCRIPT_URL_HERE";
+
+const isTeam = location.hash === "#team";
+document.querySelectorAll(".team-only").forEach(el => { el.hidden = !isTeam; });
+let sending = false;
+function setSendStatus(msg, ok = false) { const el = $("#send-status"); el.textContent = msg; el.classList.toggle("ok", ok); }
+function cleanAnswers() { const a = { ...state }; delete a.__example; delete a.headline; delete a.headlineCustom; if (!introTouched) delete a.intro; return a; }
+
+async function send() {
+  if (sending) return;
+  if (state.__example) { toast("This is the example. Clear the form and add your own answers first."); return; }
+  if (!val("name")) { toast("Add your name first so we know who you are."); $("#name").focus(); return; }
+  if ($("#website").value) return;
+  if (!/^https:\/\/script\.google\.com\//.test(SCRIPT_URL)) { setSendStatus("Sending isn’t switched on yet. Please email your answers to angels4aid@gmail.com for now."); return; }
+  sending = true; const btn = $("#btn-send"); btn.disabled = true; btn.textContent = "Sending…";
+  setSendStatus(photos.length ? "Sending your answers and photos. This can take a little while…" : "Sending…");
+  const fields = { "Name": val("name"), "Location": val("location"), "Occupation": val("occupation"), "Instagram": val("instagram") ? "@" + igHandle() : "", "Cause": val("cause"), "Connection to the cause": val("connection") };
+  BEAUTY.forEach((q, i) => { fields[q] = val("b" + i); });
+  CAUSE.forEach((q, i) => { fields[q] = val("c" + i); });
+  const payload = {
+    fields, post: buildText(),
+    answers: cleanAnswers(),
+    photos: photos.filter(p => p.src.startsWith("data:")).map(p => p.src.split(",")[1])
+  };
+  try {
+    const res = await fetch(SCRIPT_URL, { method: "POST", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify(payload) });
+    const out = await res.json().catch(() => ({}));
+    if (!res.ok || out.ok === false) throw new Error(out.error || "status " + res.status);
+    setSendStatus("Sent! Thank you for helping out with our cause. Xoxo, Angels for Aid", true);
+    toast("Sent! Thank you, angel.");
+    btn.textContent = "Sent ✓";
+    try { localStorage.removeItem(STORE); } catch (_) {}
+  } catch (e) {
+    btn.textContent = "Send to Angels for Aid"; btn.disabled = false;
+    setSendStatus("That didn’t send. Your answers are still here, so try again in a moment, or email them to angels4aid@gmail.com.");
+  } finally { sending = false; if (btn.textContent === "Sent ✓") setTimeout(() => { btn.textContent = "Send again"; btn.disabled = false; }, 4000); }
+}
+$("#btn-send").addEventListener("click", send);
+
+$("#btn-load").addEventListener("click", () => {
+  let d;
+  try { d = JSON.parse($("#paste").value.trim()); } catch (_) { toast("That isn’t a full submission code. Copy the whole cell and try again."); return; }
+  const a = d.answers || {};
+  applyState({ headline: "auto", ...a }, !!a.intro, (d.photos || []).map(src => ({ src })));
+  $("#paste").value = ""; save(); window.scrollTo({ top: 0 });
+  toast("Loaded " + possessive(a.name || "the angel") + " answers.");
+});
+
+function closeEditing() {}
+function newAngel() { applyState({ headline: "auto" }); }
+
+/* ---------- boot ---------- */
+(function boot() {
+  let saved = null;
+  try { saved = JSON.parse(localStorage.getItem(STORE) || "null"); } catch (_) {}
+  if (saved && saved.state) applyState(saved.state, !!saved.introTouched, saved.photos || []);
+  else applyState(isTeam ? EXAMPLE : { headline: "auto" });
+})();
+</script>
+
+</body>
+</html>
