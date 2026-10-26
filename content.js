@@ -7,18 +7,19 @@
  */
 window.SITE = {
   name: "Angels for Aid",
-  tagline: "where fashion meets politics.",
+  tagline: "combining beauty with social awareness",
   mission:
-    "TODO: Two or three sentences about your mission: who you help, how, and why it matters. " +
+    "A digital humanitarian fashion magazine that drives to connect young women with humanitarianism! A4A is a collection of blogs connecting beauty, fashion, and lifestyle with advocacy,  relief work, and civic engagement, written by ordinary users, microinfluencers, and influencers. " +
     "This appears in the \"about us\" section near the top of the page.",
   email: "angelsforaid@gmail.com",
 
   // Words that scroll across the pink bar at the very top of the page
   ticker: [
-    "fashion is political",
+    "fashion is political!",
     "dress loud, speak louder",
     "angels for aid",
-    "read the newsletter",
+    "read our weekly newsletter!",
+    "subscribe to our substack",
     "style with substance"
   ],
 
