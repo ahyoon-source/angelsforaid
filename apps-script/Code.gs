@@ -23,7 +23,7 @@ const FORMS = {
   piece: {
     sheet: "Newsletter pieces",
     folder: "Angels for Aid ✦ Pieces",
-    first: ["Sent", "Status", "Read it", "Folder", "Title", "Name", "Topic", "Word count", "Email", "Instagram / TikTok", "Location", "Subtitle"],
+    first: ["Sent", "Status", "Read it", "Folder", "Title", "Name", "Topic", "Word count", "Email", "Substack handle", "Location", "Subtitle"],
     last: ["Piece", "Bio", "Images", "Image credits", "Ready for Substack"],
     statuses: ["New", "Reviewing", "Scheduled", "Published", "Declined"],
     narrow: { "Sent": 140, "Status": 120, "Read it": 110, "Folder": 110, "Title": 260, "Name": 150, "Topic": 170, "Word count": 100, "Email": 200 },
@@ -80,6 +80,7 @@ function doPost(e) {
 
     lock.waitLock(20000);
     const sheet = getSheet(form);
+    renameHeader(sheet, "Instagram / TikTok", "Substack handle");
     const headers = ensureHeaders(sheet, Object.keys(values), form.last[0]);
     sheet.appendRow(headers.map(h => (h in values ? values[h] : "")));
     formatRows(sheet, sheet.getLastRow(), 1);
@@ -113,7 +114,7 @@ function makePieceDoc(f, imageFiles, folder) {
 
   body.appendParagraph(title).setHeading(DocumentApp.ParagraphHeading.TITLE);
   if (f["Subtitle"]) body.appendParagraph(String(f["Subtitle"])).setHeading(DocumentApp.ParagraphHeading.SUBTITLE);
-  const byline = "By " + f["Name"] + (f["Instagram / TikTok"] ? " (" + f["Instagram / TikTok"] + ")" : "");
+  const byline = "By " + f["Name"] + (f["Substack handle"] ? " (" + f["Substack handle"] + ")" : "");
   body.appendParagraph(byline).editAsText().setItalic(true);
   const meta = [f["Topic"], f["Word count"] ? f["Word count"] + " words" : "", f["Location"]].filter(String).join("  ✦  ");
   if (meta) body.appendParagraph(meta).editAsText().setFontSize(9).setForegroundColor("#8a7680");
@@ -237,6 +238,13 @@ function ensureHeaders(sheet, keys, insertBefore) {
     }
   });
   return headers;
+}
+
+// Renames a column header in place, so older sheets keep their data in the right column.
+function renameHeader(sheet, from, to) {
+  const headers = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0];
+  const at = headers.indexOf(from);
+  if (at > -1 && headers.indexOf(to) === -1) sheet.getRange(1, at + 1).setValue(to);
 }
 
 function getFolder(name) {

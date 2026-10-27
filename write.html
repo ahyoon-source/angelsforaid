@@ -279,7 +279,7 @@ footer.note .addr { user-select: all; color: var(--ink); border-bottom: 1px soli
     <div class="field"><label for="name">Your name<span class="req">*</span></label><span class="sub">As you’d like it to appear in the byline. A first name or nickname is fine.</span><input type="text" id="name" data-key="name" autocomplete="name"></div>
     <div class="field"><label for="email">Email<span class="req">*</span></label><span class="sub">So we can reach you about edits. It is never published.</span><input type="text" id="email" data-key="email" inputmode="email" autocomplete="email" placeholder="you@example.com"></div>
     <div class="row2">
-      <div class="field"><label for="social">Instagram or TikTok</label><span class="sub">Optional, for the byline</span><input type="text" id="social" data-key="social" placeholder="@yourhandle"></div>
+      <div class="field"><label for="social">Substack handle</label><span class="sub">Optional, for the byline. Find it on your Substack profile.</span><input type="text" id="social" data-key="social" placeholder="@yourhandle"></div>
       <div class="field"><label for="location">Location</label><span class="sub">Optional</span><input type="text" id="location" data-key="location"></div>
     </div>
     <div class="field"><label for="bio">Short bio</label><span class="sub">Optional. One or two sentences for the end of the piece.</span><textarea id="bio" data-key="bio" rows="2"></textarea></div>
@@ -416,7 +416,7 @@ $("#form").addEventListener("submit", async e => {
   sending = true; const btn = $("#btn-send"); btn.disabled = true; btn.textContent = "Sending…";
   setStatus(photos.length ? "Sending your piece and images. This can take a little while…" : "Sending…");
   const fields = {
-    "Name": val("name"), "Email": val("email"), "Instagram / TikTok": val("social"), "Location": val("location"),
+    "Name": val("name"), "Email": val("email"), "Substack handle": val("social"), "Location": val("location"),
     "Title": val("title"), "Subtitle": val("subtitle"), "Topic": val("topic"), "What readers will learn": val("learn"), "How they know about it": val("why"), "Word count": words(val("body")),
     "Piece": val("body"), "Bio": val("bio"), "Image credits": val("credits")
   };
