@@ -264,11 +264,11 @@ footer.note .addr { user-select: all; color: var(--ink); border-bottom: 1px soli
 <form class="write" id="form" autocomplete="on" novalidate>
   <section class="card rim">
     <div class="card-head"><h2>Submit a <em>piece</em></h2></div>
-    <p class="hint">Write about one thing you know up close: a cause you’ve volunteered for, a trend you’ve watched take over your school or city, a moment that changed how you see clothes, beauty or the news. The best pieces start from something you saw, did or lived. Selected pieces are published on our Substack and sent out in The Angel Times.</p>
+    <p class="hint">The Angel Times is a place to learn something new. Pick an issue you know well that most people haven’t heard much about, and teach it to us. Go narrow: instead of feminism as a whole, how sexism is shaping life for people in one country or region. Selected pieces are published on our Substack and sent out in The Angel Times.</p>
     <ul class="guide">
-      <li>Go small and specific. Not “fast fashion is bad,” but the thrift store you volunteer at, or the dress you returned and why.</li>
-      <li>Name real things: the place, the person, what was said, what it looked like. Details are what make a piece yours.</li>
-      <li>Take a side. Tell us what you think and what made you think it.</li>
+      <li>Stick to one place, one group of people, one issue. The more specific, the more we learn.</li>
+      <li>Assume we’ve never heard of it. Explain what’s happening, who it affects, and why it matters.</li>
+      <li>Tell us where you stand. We want your informed opinion, not just the facts.</li>
       <li>Any length is welcome. Most pieces are 500–1,500 words.</li>
       <li>Paste straight from Google Docs or Notes. We’ll handle the formatting.</li>
     </ul>
@@ -300,8 +300,9 @@ footer.note .addr { user-select: all; color: var(--ink); border-bottom: 1px soli
         <option>Other</option>
       </select>
     </div>
-    <div class="field"><label for="why">How did you get into this?<span class="req">*</span></label><span class="sub">The moment, person or experience that made you care. A few sentences is plenty. We read this first.</span><textarea id="why" data-key="why" rows="3"></textarea></div>
-    <div class="field"><label for="body">The piece<span class="req">*</span></label><span class="sub">Start with a real moment or detail, then tell us what it made you think.</span><textarea class="piece" id="body" data-key="body"></textarea><span class="count" id="count">0 words</span></div>
+    <div class="field"><label for="learn">What will readers learn?<span class="req">*</span></label><span class="sub">In a sentence or two, the thing most people don’t know about this. We read this first.</span><textarea id="learn" data-key="learn" rows="2"></textarea></div>
+    <div class="field"><label for="why">How do you know about this?<span class="req">*</span></label><span class="sub">Where you’re from, what you’ve studied, worked on or seen yourself.</span><textarea id="why" data-key="why" rows="2"></textarea></div>
+    <div class="field"><label for="body">The piece<span class="req">*</span></label><span class="sub">Explain it like you’re telling a friend who’s never heard of it: what’s happening, who it affects, and what you think.</span><textarea class="piece" id="body" data-key="body"></textarea><span class="count" id="count">0 words</span></div>
     <div class="field">
       <span class="label-t">Images</span><span class="sub">Optional, up to 4. Photos you took or have permission to use.</span>
       <label class="drop" id="drop" for="file"><strong>Add images</strong>Tap to choose, or drop them here</label>
@@ -335,7 +336,7 @@ let state = {}, photos = [];
 
 /* ticker */
 (function () {
-  const words = ["The Angel Times", "Write what you love", "Fashion is political", "Style with substance", "Angels for Aid"];
+  const words = ["The Angel Times", "Teach us something", "Fashion is political", "Style with substance", "Angels for Aid"];
   const one = words.map(w => `<span>${w}</span><span class="star">✦</span>`).join("");
   $("#ticker").innerHTML = one + one + one + one;
 })();
@@ -408,7 +409,7 @@ $("#form").addEventListener("submit", async e => {
   if (sending || $("#website").value) return;
   // Read what's on screen too: browser autofill doesn't always fire input events.
   document.querySelectorAll("[data-key]").forEach(el => { state[el.dataset.key] = el.type === "checkbox" ? el.checked : el.value; });
-  const need = [["name", "your name"], ["email", "your email"], ["title", "a title"], ["why", "a few words on how you got into this"], ["body", "your piece"]].find(([k]) => !val(k));
+  const need = [["name", "your name"], ["email", "your email"], ["title", "a title"], ["learn", "what readers will learn"], ["why", "how you know about this"], ["body", "your piece"]].find(([k]) => !val(k));
   if (need) { toast("Please add " + need[1] + "."); $("#" + need[0]).focus(); return; }
   if (!/^\S+@\S+\.\S+$/.test(val("email"))) { toast("That email doesn’t look quite right."); $("#email").focus(); return; }
   if (!state.okOriginal || !state.okEdit) { toast("Please tick both boxes so we can publish your piece."); return; }
@@ -416,7 +417,7 @@ $("#form").addEventListener("submit", async e => {
   setStatus(photos.length ? "Sending your piece and images. This can take a little while…" : "Sending…");
   const fields = {
     "Name": val("name"), "Email": val("email"), "Instagram / TikTok": val("social"), "Location": val("location"),
-    "Title": val("title"), "Subtitle": val("subtitle"), "Topic": val("topic"), "How they got into it": val("why"), "Word count": words(val("body")),
+    "Title": val("title"), "Subtitle": val("subtitle"), "Topic": val("topic"), "What readers will learn": val("learn"), "How they know about it": val("why"), "Word count": words(val("body")),
     "Piece": val("body"), "Bio": val("bio"), "Image credits": val("credits")
   };
   try {
