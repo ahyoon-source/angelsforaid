@@ -264,10 +264,11 @@ footer.note .addr { user-select: all; color: var(--ink); border-bottom: 1px soli
 <form class="write" id="form" autocomplete="on" novalidate>
   <section class="card rim">
     <div class="card-head"><h2>Submit a <em>piece</em></h2></div>
-    <p class="hint">Write about the thing you can’t stop talking about: the cause that keeps you up at night, the trend you have real opinions on, the story only you could tell. We’d rather read something heartfelt and a little messy than something perfect that doesn’t sound like you. Selected pieces are published on our Substack and sent out in The Angel Times.</p>
+    <p class="hint">Write about one thing you know up close: a cause you’ve volunteered for, a trend you’ve watched take over your school or city, a moment that changed how you see clothes, beauty or the news. The best pieces start from something you saw, did or lived. Selected pieces are published on our Substack and sent out in The Angel Times.</p>
     <ul class="guide">
-      <li>Pick the topic you care about most. If you could talk about it for an hour, that’s the one.</li>
-      <li>Write the way you talk. Your opinions, your experiences, and the little details only you would know are what make a piece stick.</li>
+      <li>Go small and specific. Not “fast fashion is bad,” but the thrift store you volunteer at, or the dress you returned and why.</li>
+      <li>Name real things: the place, the person, what was said, what it looked like. Details are what make a piece yours.</li>
+      <li>Take a side. Tell us what you think and what made you think it.</li>
       <li>Any length is welcome. Most pieces are 500–1,500 words.</li>
       <li>Paste straight from Google Docs or Notes. We’ll handle the formatting.</li>
     </ul>
@@ -299,8 +300,8 @@ footer.note .addr { user-select: all; color: var(--ink); border-bottom: 1px soli
         <option>Other</option>
       </select>
     </div>
-    <div class="field"><label for="why">Why this, why you?<span class="req">*</span></label><span class="sub">A few sentences on why this topic matters to you. What got you into it? We read this first.</span><textarea id="why" data-key="why" rows="3"></textarea></div>
-    <div class="field"><label for="body">The piece<span class="req">*</span></label><span class="sub">Tell it like you’d tell a friend who asked why you care so much.</span><textarea class="piece" id="body" data-key="body"></textarea><span class="count" id="count">0 words</span></div>
+    <div class="field"><label for="why">How did you get into this?<span class="req">*</span></label><span class="sub">The moment, person or experience that made you care. A few sentences is plenty. We read this first.</span><textarea id="why" data-key="why" rows="3"></textarea></div>
+    <div class="field"><label for="body">The piece<span class="req">*</span></label><span class="sub">Start with a real moment or detail, then tell us what it made you think.</span><textarea class="piece" id="body" data-key="body"></textarea><span class="count" id="count">0 words</span></div>
     <div class="field">
       <span class="label-t">Images</span><span class="sub">Optional, up to 4. Photos you took or have permission to use.</span>
       <label class="drop" id="drop" for="file"><strong>Add images</strong>Tap to choose, or drop them here</label>
@@ -407,7 +408,7 @@ $("#form").addEventListener("submit", async e => {
   if (sending || $("#website").value) return;
   // Read what's on screen too: browser autofill doesn't always fire input events.
   document.querySelectorAll("[data-key]").forEach(el => { state[el.dataset.key] = el.type === "checkbox" ? el.checked : el.value; });
-  const need = [["name", "your name"], ["email", "your email"], ["title", "a title"], ["why", "a few words on why this matters to you"], ["body", "your piece"]].find(([k]) => !val(k));
+  const need = [["name", "your name"], ["email", "your email"], ["title", "a title"], ["why", "a few words on how you got into this"], ["body", "your piece"]].find(([k]) => !val(k));
   if (need) { toast("Please add " + need[1] + "."); $("#" + need[0]).focus(); return; }
   if (!/^\S+@\S+\.\S+$/.test(val("email"))) { toast("That email doesn’t look quite right."); $("#email").focus(); return; }
   if (!state.okOriginal || !state.okEdit) { toast("Please tick both boxes so we can publish your piece."); return; }
@@ -415,7 +416,7 @@ $("#form").addEventListener("submit", async e => {
   setStatus(photos.length ? "Sending your piece and images. This can take a little while…" : "Sending…");
   const fields = {
     "Name": val("name"), "Email": val("email"), "Instagram / TikTok": val("social"), "Location": val("location"),
-    "Title": val("title"), "Subtitle": val("subtitle"), "Topic": val("topic"), "Why it matters to them": val("why"), "Word count": words(val("body")),
+    "Title": val("title"), "Subtitle": val("subtitle"), "Topic": val("topic"), "How they got into it": val("why"), "Word count": words(val("body")),
     "Piece": val("body"), "Bio": val("bio"), "Image credits": val("credits")
   };
   try {
