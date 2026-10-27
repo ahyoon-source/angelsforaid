@@ -403,6 +403,8 @@ let sending = false;
 $("#form").addEventListener("submit", async e => {
   e.preventDefault();
   if (sending || $("#website").value) return;
+  // Read what's on screen too: browser autofill doesn't always fire input events.
+  document.querySelectorAll("[data-key]").forEach(el => { state[el.dataset.key] = el.type === "checkbox" ? el.checked : el.value; });
   const need = [["name", "your name"], ["email", "your email"], ["title", "a title"], ["body", "your piece"]].find(([k]) => !val(k));
   if (need) { toast("Please add " + need[1] + "."); $("#" + need[0]).focus(); return; }
   if (!/^\S+@\S+\.\S+$/.test(val("email"))) { toast("That email doesn’t look quite right."); $("#email").focus(); return; }
