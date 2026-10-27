@@ -3,30 +3,30 @@
  *
  * Paste this whole file into Extensions → Apps Script on your Google Sheet,
  * then deploy it as a web app (see SPOTTED-SETUP.md). It receives two forms:
- *   spotted.html → the "Submissions" tab, photos in "Angels for Aid ✦ Angel photos"
- *   write.html   → the "Newsletter pieces" tab, images in "Angels for Aid ✦ Newsletter images",
- *                  and a formatted Google Doc for each piece in "Angels for Aid ✦ Newsletter pieces"
+ *   spotted.html → the "Submissions" tab, plus a folder for each angel (a Google Doc of their
+ *                  answers and their photos) inside "Angels for Aid ✦ Angels spotted"
+ *   write.html   → the "Newsletter pieces" tab, plus a folder for each piece (a formatted
+ *                  Google Doc and its images) inside "Angels for Aid ✦ Pieces"
  *
  * After pasting a new version, run "tidy" once to neaten the tabs you already have.
  */
 const FORMS = {
   spotted: {
     sheet: "Submissions",
-    folder: "Angels for Aid ✦ Angel photos",
-    first: ["Sent", "Status", "Name", "Location", "Occupation", "Instagram", "Cause", "Connection to the cause"],
+    folder: "Angels for Aid ✦ Angels spotted",
+    first: ["Sent", "Status", "Read it", "Folder", "Name", "Location", "Occupation", "Instagram", "Cause", "Connection to the cause"],
     last: ["Photos", "Formatted post", "Submission code"],
     statuses: ["New", "Posted"],
-    narrow: { "Sent": 140, "Status": 110, "Name": 150, "Location": 140, "Instagram": 140, "Cause": 180 },
+    narrow: { "Sent": 140, "Status": 110, "Read it": 110, "Folder": 110, "Name": 150, "Location": 140, "Instagram": 140, "Cause": 180 },
     maxPhotos: 8
   },
   piece: {
     sheet: "Newsletter pieces",
-    folder: "Angels for Aid ✦ Newsletter images",
-    docs: "Angels for Aid ✦ Newsletter pieces",
-    first: ["Sent", "Status", "Read it", "Title", "Name", "Topic", "Word count", "Email", "Instagram / TikTok", "Location", "Subtitle"],
+    folder: "Angels for Aid ✦ Pieces",
+    first: ["Sent", "Status", "Read it", "Folder", "Title", "Name", "Topic", "Word count", "Email", "Instagram / TikTok", "Location", "Subtitle"],
     last: ["Piece", "Bio", "Images", "Image credits", "Ready for Substack"],
     statuses: ["New", "Reviewing", "Scheduled", "Published", "Declined"],
-    narrow: { "Sent": 140, "Status": 120, "Read it": 110, "Title": 260, "Name": 150, "Topic": 170, "Word count": 100, "Email": 200 },
+    narrow: { "Sent": 140, "Status": 120, "Read it": 110, "Folder": 110, "Title": 260, "Name": 150, "Topic": 170, "Word count": 100, "Email": 200 },
     maxPhotos: 4
   }
 };
@@ -48,9 +48,11 @@ function doPost(e) {
     const name = String(fields["Name"] || "").slice(0, 200);
     if (!name) return reply({ ok: false, error: "missing name" });
 
-    // Save photos to Drive (anyone with the link can view, so they can go on the blog).
-    const folder = getFolder(form.folder);
+    // Each submission gets its own folder for its Doc and photos.
     const stamp = Utilities.formatDate(new Date(), Session.getScriptTimeZone(), "yyyy-MM-dd HHmm");
+    const label = d.type === "piece" ? `${String(fields["Title"] || "Untitled").slice(0, 120)} by ${name}` : name;
+    const folder = getFolder(form.folder).createFolder(`${label} (${stamp})`);
+    // Photos: anyone with the link can view, so they can go on the blog.
     const files = [];
     (d.photos || []).slice(0, form.maxPhotos).forEach((b64, i) => {
       const blob = Utilities.newBlob(Utilities.base64Decode(b64), "image/jpeg", `${name} ${stamp} (${i + 1}).jpg`);
@@ -61,9 +63,10 @@ function doPost(e) {
     const photoLinks = files.map(f => f.getUrl()).join("\n");
 
     const values = Object.assign({}, fields, { "Sent": new Date(), "Status": "New" });
+    const docUrl = d.type === "piece" ? makePieceDoc(d.fields || {}, files, folder) : makeSpottedDoc(d.fields || {}, files, folder);
+    values["Read it"] = `=HYPERLINK("${docUrl}","Open the doc")`;
+    values["Folder"] = `=HYPERLINK("${folder.getUrl()}","Open folder")`;
     if (d.type === "piece") {
-      const docUrl = makePieceDoc(d.fields || {}, files, getFolder(form.docs));
-      values["Read it"] = `=HYPERLINK("${docUrl}","Open the piece")`;
       values["Images"] = photoLinks;
       values["Ready for Substack"] = String(d.post || "");
     } else {
@@ -82,7 +85,7 @@ function doPost(e) {
     formatRows(sheet, sheet.getLastRow(), 1);
     return reply({ ok: true });
   } catch (err) {
-    return reply({ ok: false, error: String(err) + " [v3] " + String(err.stack || "").split("\n").slice(0, 3).join(" ") });
+    return reply({ ok: false, error: String(err) + " [v4] " + String(err.stack || "").split("\n").slice(0, 3).join(" ") });
   } finally {
     lock.releaseLock();
   }
@@ -94,7 +97,7 @@ function doGet() {
   const ss = SpreadsheetApp.getActiveSpreadsheet();
   const tabs = ss.getSheets().map(s => `  ${s.getName()} (${s.getLastColumn()} columns)`).join("\n");
   return ContentService.createTextOutput(
-    `Angels for Aid form receiver is running ✦ (v3)\n\nSpreadsheet: ${ss.getName()}\nTabs:\n${tabs}`);
+    `Angels for Aid form receiver is running ✦ (v4)\n\nSpreadsheet: ${ss.getName()}\nTabs:\n${tabs}`);
 }
 
 function reply(obj) {
@@ -129,7 +132,37 @@ function makePieceDoc(f, imageFiles, folder) {
     if (f["Image credits"]) body.appendParagraph("Images: " + f["Image credits"]).editAsText().setFontSize(9);
   }
 
-  const first = body.getChild(0);
+  return finishDoc(doc, folder);
+}
+
+/* ---------- the Google Doc for each spotted angel ---------- */
+function makeSpottedDoc(f, imageFiles, folder) {
+  const name = String(f["Name"] || "Angel");
+  const doc = DocumentApp.create(`${name} ✦ Angel spotted`);
+  const body = doc.getBody();
+  body.setMarginLeft(72).setMarginRight(72);
+
+  body.appendParagraph(name).setHeading(DocumentApp.ParagraphHeading.TITLE);
+  const meta = [f["Occupation"], f["Location"], f["Instagram"]].filter(String).join("  ✦  ");
+  if (meta) body.appendParagraph(meta).editAsText().setItalic(true);
+
+  if (imageFiles[0]) addImage(body, imageFiles[0]);
+
+  // Every other answer, as the question followed by what they wrote.
+  const skip = ["Name", "Occupation", "Location", "Instagram"];
+  Object.keys(f).filter(k => skip.indexOf(k) === -1 && String(f[k] || "").trim()).forEach(q => {
+    body.appendParagraph(q).setHeading(DocumentApp.ParagraphHeading.HEADING3);
+    String(f[q]).split(/\r?\n/).forEach(line => {
+      if (line.trim()) body.appendParagraph(line.trim()).setSpacingAfter(8).setLineSpacing(1.3);
+    });
+  });
+
+  imageFiles.slice(1).forEach(file => addImage(body, file));
+  return finishDoc(doc, folder);
+}
+
+function finishDoc(doc, folder) {
+  const body = doc.getBody(), first = body.getChild(0);
   if (body.getNumChildren() > 1 && first.getType() === DocumentApp.ElementType.PARAGRAPH && !first.asParagraph().getText()) {
     body.removeChild(first);
   }
@@ -216,7 +249,6 @@ function setup() {
   Object.keys(FORMS).forEach(k => {
     getSheet(FORMS[k]);
     getFolder(FORMS[k].folder);
-    if (FORMS[k].docs) getFolder(FORMS[k].docs);
   });
 }
 
@@ -227,7 +259,7 @@ function tidy() {
   Object.keys(FORMS).forEach(k => {
     const form = FORMS[k], sheet = ss.getSheetByName(form.sheet);
     if (!sheet) return;
-    if (form === FORMS.piece) ensureHeaders(sheet, ["Read it"], "Title");
+    ensureHeaders(sheet, ["Read it", "Folder"], form.first[4]);
     layout(sheet, form);
   });
 }
