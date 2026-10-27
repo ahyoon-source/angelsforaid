@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Write for The Angel Times · Angels for Aid</title>
-<meta name="description" content="Submit your own piece to be published on the Angels for Aid Substack and sent out in The Angel Times newsletter.">
+<meta name="description" content="Write about what you care about most and submit your piece to be published on the Angels for Aid Substack and sent out in The Angel Times newsletter.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🪽</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -264,11 +264,12 @@ footer.note .addr { user-select: all; color: var(--ink); border-bottom: 1px soli
 <form class="write" id="form" autocomplete="on" novalidate>
   <section class="card rim">
     <div class="card-head"><h2>Submit a <em>piece</em></h2></div>
-    <p class="hint">Have something to say about fashion, politics, or a cause you care about? Send us your writing. Selected pieces are published on our Substack and sent out in The Angel Times.</p>
+    <p class="hint">Write about the thing you can’t stop talking about: the cause that keeps you up at night, the trend you have real opinions on, the story only you could tell. We’d rather read something heartfelt and a little messy than something perfect that doesn’t sound like you. Selected pieces are published on our Substack and sent out in The Angel Times.</p>
     <ul class="guide">
+      <li>Pick the topic you care about most. If you could talk about it for an hour, that’s the one.</li>
+      <li>Write the way you talk. Your opinions, your experiences, and the little details only you would know are what make a piece stick.</li>
       <li>Any length is welcome. Most pieces are 500–1,500 words.</li>
       <li>Paste straight from Google Docs or Notes. We’ll handle the formatting.</li>
-      <li>It should be your own original writing.</li>
     </ul>
   </section>
 
@@ -298,7 +299,8 @@ footer.note .addr { user-select: all; color: var(--ink); border-bottom: 1px soli
         <option>Other</option>
       </select>
     </div>
-    <div class="field"><label for="body">The piece<span class="req">*</span></label><textarea class="piece" id="body" data-key="body"></textarea><span class="count" id="count">0 words</span></div>
+    <div class="field"><label for="why">Why this, why you?<span class="req">*</span></label><span class="sub">A few sentences on why this topic matters to you. What got you into it? We read this first.</span><textarea id="why" data-key="why" rows="3"></textarea></div>
+    <div class="field"><label for="body">The piece<span class="req">*</span></label><span class="sub">Tell it like you’d tell a friend who asked why you care so much.</span><textarea class="piece" id="body" data-key="body"></textarea><span class="count" id="count">0 words</span></div>
     <div class="field">
       <span class="label-t">Images</span><span class="sub">Optional, up to 4. Photos you took or have permission to use.</span>
       <label class="drop" id="drop" for="file"><strong>Add images</strong>Tap to choose, or drop them here</label>
@@ -311,7 +313,7 @@ footer.note .addr { user-select: all; color: var(--ink); border-bottom: 1px soli
   <section class="card rim send-card">
     <div class="card-head"><h2>Ready to <em>send?</em></h2></div>
     <div class="checks">
-      <label class="check"><input type="checkbox" id="ok-original" data-key="okOriginal"> <span>This is my own original writing.<span class="req">*</span></span></label>
+      <label class="check"><input type="checkbox" id="ok-original" data-key="okOriginal"> <span>These are my own words, ideas and experiences.<span class="req">*</span></span></label>
       <label class="check"><input type="checkbox" id="ok-edit" data-key="okEdit"> <span>Angels for Aid may lightly edit it and publish it on Substack and in the newsletter, with credit to me.<span class="req">*</span></span></label>
     </div>
     <label class="hp" aria-hidden="true">Leave this empty <input type="text" id="website" tabindex="-1" autocomplete="off"></label>
@@ -332,7 +334,7 @@ let state = {}, photos = [];
 
 /* ticker */
 (function () {
-  const words = ["The Angel Times", "Write for us", "Fashion is political", "Style with substance", "Angels for Aid"];
+  const words = ["The Angel Times", "Write what you love", "Fashion is political", "Style with substance", "Angels for Aid"];
   const one = words.map(w => `<span>${w}</span><span class="star">✦</span>`).join("");
   $("#ticker").innerHTML = one + one + one + one;
 })();
@@ -405,7 +407,7 @@ $("#form").addEventListener("submit", async e => {
   if (sending || $("#website").value) return;
   // Read what's on screen too: browser autofill doesn't always fire input events.
   document.querySelectorAll("[data-key]").forEach(el => { state[el.dataset.key] = el.type === "checkbox" ? el.checked : el.value; });
-  const need = [["name", "your name"], ["email", "your email"], ["title", "a title"], ["body", "your piece"]].find(([k]) => !val(k));
+  const need = [["name", "your name"], ["email", "your email"], ["title", "a title"], ["why", "a few words on why this matters to you"], ["body", "your piece"]].find(([k]) => !val(k));
   if (need) { toast("Please add " + need[1] + "."); $("#" + need[0]).focus(); return; }
   if (!/^\S+@\S+\.\S+$/.test(val("email"))) { toast("That email doesn’t look quite right."); $("#email").focus(); return; }
   if (!state.okOriginal || !state.okEdit) { toast("Please tick both boxes so we can publish your piece."); return; }
@@ -413,7 +415,7 @@ $("#form").addEventListener("submit", async e => {
   setStatus(photos.length ? "Sending your piece and images. This can take a little while…" : "Sending…");
   const fields = {
     "Name": val("name"), "Email": val("email"), "Instagram / TikTok": val("social"), "Location": val("location"),
-    "Title": val("title"), "Subtitle": val("subtitle"), "Topic": val("topic"), "Word count": words(val("body")),
+    "Title": val("title"), "Subtitle": val("subtitle"), "Topic": val("topic"), "Why it matters to them": val("why"), "Word count": words(val("body")),
     "Piece": val("body"), "Bio": val("bio"), "Image credits": val("credits")
   };
   try {
