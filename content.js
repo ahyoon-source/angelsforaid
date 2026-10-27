@@ -63,7 +63,7 @@ window.SITE = {
   // ---- Influencers & collaborators ----
   // platform: "tiktok", "instagram", "substack" or "youtube"
   collaborators: [
-    { name: "Hailey Fuentes", handle: "@haileyfuentes_", platform: "tiktok",    url: "https://www.tiktok.com/@haileyfuentes_",   photo: "" },
+    { name: "Kelly Anderson", handle: "@thekellyanderson", platform: "tiktok",    url: "https://www.tiktok.com/@thekellyanderson",   photo: "" },
     { name: "Catherine Pinkos", handle: "@catherinepinknos", platform: "instagram", url: "https://www.instagram.com/catherinepinknos", photo: "" },
     { name: "Phoenix", handle: "@phoenix.star07", platform: "tiktok",    url: "https://www.tiktok.com/@phoenix.star07",   photo: "" },
     { name: "Serena Chappell", handle: "@serenachappell_", platform: "instagram", url: "https://www.instagram.com/serenachappell_", photo: "" }
