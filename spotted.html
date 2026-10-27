@@ -251,15 +251,10 @@ footer.note .addr { user-select: all; color: var(--ink); border-bottom: 1px soli
   </h1>
   <p class="label">Become an Angel Advocate</p>
   <div class="head-actions team-only" hidden>
-    <button class="btn" id="btn-example" type="button">Load example</button>
     <button class="btn" id="btn-clear" type="button">Clear form</button>
   </div>
 </header>
 
-<div class="banner" id="example-banner" hidden>
-  <span><strong>This is an example.</strong> Phoenix’s answers are filled in so you can see how the post comes together. Clear the form to add your own.</span>
-  <button class="btn" id="btn-clear-2" type="button">Start my own</button>
-</div>
 
 <div class="viewtoggle rim" role="group" aria-label="View">
   <button type="button" id="v-form" aria-pressed="true">Questions</button>
@@ -272,9 +267,9 @@ footer.note .addr { user-select: all; color: var(--ink); border-bottom: 1px soli
     <section class="card rim">
       <div class="card-head"><h2>Introduction</h2><span class="chip" id="chip-intro">0 / 2</span></div>
       <p class="hint">Welcome to Angels for Aid, a start-up nonprofit combining beauty, lifestyle and influencers with advocacy, intervention and humanitarian aid. Answer as much or as little as you like. Long answers are welcome, though not everything may fit on the blog.</p>
-      <div class="field"><label for="name">Name</label><span class="sub">First and last, only first, or a nickname</span><input type="text" id="name" data-key="name" placeholder="Phoenix"></div>
+      <div class="field"><label for="name">Name</label><span class="sub">First and last, only first, or a nickname</span><input type="text" id="name" data-key="name" placeholder="Your name or nickname"></div>
       <div class="row2">
-        <div class="field"><label for="location">Location</label><span class="sub">State, country, whatever’s comfortable</span><input type="text" id="location" data-key="location" placeholder="North Wales"></div>
+        <div class="field"><label for="location">Location</label><span class="sub">State, country, whatever’s comfortable</span><input type="text" id="location" data-key="location" placeholder="e.g. Texas, USA"></div>
         <div class="field"><label for="instagram">Instagram</label><span class="sub">Optional</span><input type="text" id="instagram" data-key="instagram" placeholder="@yourhandle"></div>
       </div>
       <div class="field"><label for="occupation">What do you do?</label><span class="sub">Job or education, include your major or aspired major. Finish the sentence “I am currently…”</span><input type="text" id="occupation" data-key="occupation" placeholder="a mass media arts student at Clark Atlanta University"></div>
@@ -328,7 +323,7 @@ footer.note .addr { user-select: all; color: var(--ink); border-bottom: 1px soli
         <select id="headline" data-key="headline"></select>
         <input type="text" id="headlineCustom" data-key="headlineCustom" placeholder="Write a custom headline quote" hidden>
       </div>
-      <div class="field"><label for="adjective">Describe this angel in one word</label><span class="sub">Used in “Introducing Nala, an insightful angel…”</span><input type="text" id="adjective" data-key="adjective" placeholder="insightful"></div>
+      <div class="field"><label for="adjective">Describe this angel in one word</label><span class="sub">Used in the intro, like “Introducing [name], an insightful angel…”</span><input type="text" id="adjective" data-key="adjective" placeholder="insightful"></div>
       <div class="field"><label for="intro">Angel Spotted intro</label><span class="sub">Written for you from the introduction. Edit it here if you want different wording.</span><textarea id="intro" data-key="intro" rows="2"></textarea></div>
       <div class="field">
         <label for="explainPreset">A4A’s explanation of the cause</label>
@@ -394,24 +389,6 @@ const PRESETS = {
   "Women’s safety": "Violence against women is a major humanitarian issue that affects millions of women and girls worldwide. It includes domestic abuse, sexual violence, human trafficking, forced marriage, and gender-based discrimination. These violations threaten basic human rights, limit access to education and economic opportunities, and cause lasting physical and psychological harm. Addressing this issue requires stronger legal protections, access to support services, public education, and international cooperation to ensure women and girls can live safely and with dignity.",
   "Feminism": "Feminism is a social, political, and intellectual movement that advocates for gender equality and equal rights for all people, regardless of gender. It seeks to eliminate discrimination, sexism, and gender-based violence in society. Feminism addresses inequalities in areas such as education, employment, politics, healthcare, and the legal system. It also challenges traditional gender roles and expectations that limit people's freedom and opportunities.",
   "Child health": "Child safety and wellbeing is a major humanitarian concern because every child deserves to grow up in a safe, healthy, and supportive environment. Violence, neglect, poverty, and lack of access to education and healthcare threaten children's rights and development. Protecting children ensures they have the opportunity to live healthy, secure, and fulfilling lives."
-};
-const EXAMPLE = {
-  name: "Phoenix", location: "North Wales", occupation: "", instagram: "", adjective: "educated",
-  cause: "Environmentalism", connection: "",
-  b0: "My sense of style is one of variety, I love to experiment with makeup and colours focusing on what I can find in my local charity shop! I find that dressing up and wearing my makeup really motivates me for the day!",
-  b1: "Probably my camera, I bring it everywhere! It’s just a little canon camera which is good enough and helps me to capture those moments which mean the most.",
-  b2: "My fashion role model is definitely Helena Bonham Carter!",
-  b3: "My eyeliner I love a swirl and a dot it makes me feel so whimsy!",
-  b5: "Very controversial but I think leggings need to go!",
-  b6: "I shop in charity shops! Typically picking up items from the M&S collection second hand as they are the loveliest material.",
-  b10: "My tips for confidence would ultimately be to stop caring about what everyone else thinks! It doesn’t matter if you get a weird look on the street or if someone thinks you look strange, be yourself and be confident in who you are!",
-  c0: "I have held an interest in the cause for the longest time, I don’t want to watch the world die and would love to be a part of the change!",
-  c1: "My interest in changing how things are was David Attenborough’s more recent documentary about life on our planet! This documentary really stuck with me because of the sadness he conveyed in the cinematography and vocabulary he used to show his devastation about the way the world is going.",
-  c5: "Humanitarian aid is becoming increasingly important as the climate crisis continues to threaten the lives of thousands. Those who feel they can’t speak often have the most important stories to say.",
-  c6: "The biggest challenges with this cause are, blind sightedness about the reality of what’s happening, unwillingness to work towards a shared cause, uncaring nature for the wildlife and people who cannot speak for themselves and the thousands who don’t want to listen to the truth about the crises",
-  explain: PRESETS["Environmental protection"],
-  orgs: "WWF, https://www.worldwildlife.org\nSurfers Against Sewage, https://www.sas.org.uk",
-  headline: "auto", __example: true
 };
 
 const $ = s => document.querySelector(s);
@@ -569,7 +546,6 @@ function render() {
 
   const html = buildPost(true);
   $("#post").innerHTML = html || `<p class="empty">Start answering the questions and the post will write itself here.</p>`;
-  $("#example-banner").hidden = !state.__example;
 }
 
 /* ---------- state ---------- */
@@ -687,8 +663,6 @@ function armClear(btn) {
   setTimeout(() => { if (armed === btn) { armed = null; btn.classList.remove("danger-armed"); btn.textContent = btn.dataset.label; } }, 3500);
 }
 $("#btn-clear").addEventListener("click", e => armClear(e.currentTarget));
-$("#btn-clear-2").addEventListener("click", e => armClear(e.currentTarget));
-$("#btn-example").addEventListener("click", () => { if (isTeam) closeEditing(); applyState(EXAMPLE); save(); });
 
 /* ---------- mobile view toggle ---------- */
 function setView(v) { $("#layout").dataset.view = v; $("#v-form").setAttribute("aria-pressed", v === "form"); $("#v-post").setAttribute("aria-pressed", v === "post"); window.scrollTo({ top: 0 }); }
@@ -760,8 +734,8 @@ function newAngel() { applyState({ headline: "auto" }); }
 (function boot() {
   let saved = null;
   try { saved = JSON.parse(localStorage.getItem(STORE) || "null"); } catch (_) {}
-  if (saved && saved.state) applyState(saved.state, !!saved.introTouched, saved.photos || []);
-  else applyState(isTeam ? EXAMPLE : { headline: "auto" });
+  if (saved && saved.state && !saved.state.__example) applyState(saved.state, !!saved.introTouched, saved.photos || []);
+  else applyState({ headline: "auto" });
 })();
 </script>
 
