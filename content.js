@@ -56,7 +56,7 @@ window.SITE = {
   // photo: put the image in the /images folder and write "images/filename.jpg"
   // Leave photo as "" to show the person's initials instead.
   board: [
-    { name: "Emma Mulcahy", role: "Founder",   bio: "Emma Mulcahy is a freshman at Cal Poly SLO. She plans to major in political science with a concentration in pre-law.", photo: "images/emma.jpg" },
+    { name: "Emma Mulcahy", role: "Founder",   bio: "Emma Mulcahy is a freshman at Cal Poly SLO. She plans to major in political science with a concentration in pre-law.", photo: "images/emma.png" },
     { name: "Acacia Yoon", role: "Editor and Social Media Lead",   bio: "Acacia Yoon is a freshman at Stanford University. She plans to study bio-medical computation and is on the pre-med track.", photo: "images/acacia.jpg" },
   ],
 
