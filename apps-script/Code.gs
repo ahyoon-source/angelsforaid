@@ -129,7 +129,7 @@ function makePieceDoc(f, imageFiles, folder) {
 
   if (f["Bio"] || f["Image credits"]) {
     body.appendHorizontalRule();
-    if (f["Bio"]) body.appendParagraph("About the writer: " + f["Bio"]).editAsText().setItalic(true);
+    if (f["Bio"]) body.appendParagraph("About the angel author: " + f["Bio"]).editAsText().setItalic(true);
     if (f["Image credits"]) body.appendParagraph("Images: " + f["Image credits"]).editAsText().setFontSize(9);
   }
 

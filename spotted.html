@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Angel Spotted · Angels for Aid</title>
+<title>Become an Angel Advocate · Angels for Aid</title>
 <meta name="description" content="Be featured on the Angels for Aid blog. Answer a few questions about your style and the cause close to your heart.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🪽</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -249,7 +249,7 @@ footer.note .addr { user-select: all; color: var(--ink); border-bottom: 1px soli
     <span class="mh-word">Angels</span>
     <span class="mh-script">for aid</span>
   </h1>
-  <p class="label">Be an Angel Spotted</p>
+  <p class="label">Become an Angel Advocate</p>
   <div class="head-actions team-only" hidden>
     <button class="btn" id="btn-example" type="button">Load example</button>
     <button class="btn" id="btn-clear" type="button">Clear form</button>
@@ -697,7 +697,7 @@ $("#v-post").onclick = () => setView("post");
 
 /* ---------- ticker ---------- */
 (function () {
-  const words = ["Angel Spotted", "Beauty", "Lifestyle", "Fashion", "Advocacy", "Humanitarian aid", "Where fashion meets politics"];
+  const words = ["Angel Advocates", "Beauty", "Lifestyle", "Fashion", "Advocacy", "Humanitarian aid", "Where fashion meets politics"];
   const one = words.map(w => `<span>${w}</span><span class="star">✦</span>`).join("");
   $("#ticker").innerHTML = one + one + one + one;
 })();
@@ -734,7 +734,7 @@ async function send() {
     const out = await res.json().catch(() => ({}));
     if (!res.ok || out.ok === false) throw new Error(out.error || "status " + res.status);
     setSendStatus("Sent! Thank you for helping out with our cause. Xoxo, Angels for Aid", true);
-    toast("Sent! Thank you, angel.");
+    toast("Sent! Thank you, angel advocate.");
     btn.textContent = "Sent ✓";
     try { localStorage.removeItem(STORE); } catch (_) {}
   } catch (e) {

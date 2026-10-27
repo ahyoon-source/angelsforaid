@@ -258,7 +258,7 @@ footer.note .addr { user-select: all; color: var(--ink); border-bottom: 1px soli
     <span class="mh-word">Heaven</span>
     <span class="mh-script">sent</span>
   </h1>
-  <p class="label">Write for our newsletter</p>
+  <p class="label">Become an Angel Author</p>
 </header>
 
 <form class="write" id="form" autocomplete="on" novalidate>
@@ -336,7 +336,7 @@ let state = {}, photos = [];
 
 /* ticker */
 (function () {
-  const words = ["Heaven Sent", "Teach us something", "Fashion is political", "Style with substance", "Angels for Aid"];
+  const words = ["Heaven Sent", "Angel Authors", "Teach us something", "Fashion is political", "Style with substance", "Angels for Aid"];
   const one = words.map(w => `<span>${w}</span><span class="star">✦</span>`).join("");
   $("#ticker").innerHTML = one + one + one + one;
 })();
@@ -397,7 +397,7 @@ function substackText() {
   const L = [val("title")];
   if (val("subtitle")) L.push(val("subtitle"));
   L.push("", "By " + val("name") + (val("social") ? " (" + val("social") + ")" : ""), "", val("body"));
-  if (val("bio")) L.push("", "About the writer: " + val("bio"));
+  if (val("bio")) L.push("", "About the angel author: " + val("bio"));
   if (val("credits")) L.push("", "Images: " + val("credits"));
   return L.join("\n");
 }
@@ -426,7 +426,7 @@ $("#form").addEventListener("submit", async e => {
     const out = await res.json().catch(() => ({}));
     if (!res.ok || out.ok === false) throw new Error(out.error || "status " + res.status);
     setStatus("Sent! Thank you for writing with us. We’ll email you at " + val("email") + ".", true);
-    toast("Sent! Thank you, angel.");
+    toast("Sent! Thank you, angel author.");
     btn.textContent = "Sent ✓";
     try { localStorage.removeItem(STORE); } catch (_) {}
   } catch (err) {
