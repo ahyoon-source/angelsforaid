@@ -25,9 +25,9 @@ window.SITE = {
 
   // The three tags in the "about us" section
   pillars: [
-    { title: "style",     text: "Fashion is how we show up. We use it to start conversations." },
-    { title: "substance", text: "Clear, honest coverage of the issues that matter, every week." },
-    { title: "aid",       text: "Turning attention into action for the causes we care about." }
+    { title: "style",     text: "Real angels share their style and the cause close to their heart. What we wear opens the conversation." },
+    { title: "substance", text: "Heaven Sent teaches the issues most people haven't heard of, written by people who have studied, lived or seen them." },
+    { title: "aid",       text: "Every story points to the organizations doing the work, so caring turns into helping." }
   ],
 
   // ---- Social links ----
