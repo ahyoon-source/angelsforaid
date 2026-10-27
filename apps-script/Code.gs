@@ -82,15 +82,19 @@ function doPost(e) {
     formatRows(sheet, sheet.getLastRow(), 1);
     return reply({ ok: true });
   } catch (err) {
-    return reply({ ok: false, error: String(err) });
+    return reply({ ok: false, error: String(err) + " [v3] " + String(err.stack || "").split("\n").slice(0, 3).join(" ") });
   } finally {
     lock.releaseLock();
   }
 }
 
 // Visiting the web app URL in a browser shows this, so you can check it's live.
+// It also lists the spreadsheet and tabs this script writes to, to help spot setup problems.
 function doGet() {
-  return ContentService.createTextOutput("Angels for Aid form receiver is running ✦");
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  const tabs = ss.getSheets().map(s => `  ${s.getName()} (${s.getLastColumn()} columns)`).join("\n");
+  return ContentService.createTextOutput(
+    `Angels for Aid form receiver is running ✦ (v3)\n\nSpreadsheet: ${ss.getName()}\nTabs:\n${tabs}`);
 }
 
 function reply(obj) {
