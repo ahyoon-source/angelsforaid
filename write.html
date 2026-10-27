@@ -427,7 +427,7 @@ $("#form").addEventListener("submit", async e => {
     try { localStorage.removeItem(STORE); } catch (_) {}
   } catch (err) {
     btn.textContent = "Send my piece"; btn.disabled = false;
-    setStatus("That didn’t send. Your piece is still here, so try again in a moment, or email it to angelsforaid@gmail.com.");
+    setStatus("That didn’t send. Your piece is still here, so try again in a moment, or email it to angelsforaid@gmail.com. (Details: " + (err && err.message || err) + ")");
   } finally { sending = false; }
 });
 
