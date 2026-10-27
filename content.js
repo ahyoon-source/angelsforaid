@@ -44,10 +44,10 @@ window.SITE = {
     // Add each new issue at the TOP of this list. Leave it empty [] to hide this part.
     issues: [
       {
-        title: "I Attended a (Free) Turning Point USA Event.. Here are my Thoughts.",
+        title: "The Lost Art of Having a Hobby",
         date: "2026-10-22",
-        url: "https://angelsforaid.substack.com/p/i-attended-a-free-turning-point-usa",
-        summary: "A few nights ago, my university held an event with Turning Point USA (TPUSA)..."
+        url: "https://substack.com/home/post/p-222253211",
+        summary: "When was the last time you did something simply because you enjoyed it?...Read More"
       }
     ]
   },
