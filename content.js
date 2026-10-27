@@ -45,7 +45,7 @@ window.SITE = {
     issues: [
       {
         title: "The Lost Art of Having a Hobby",
-        date: "2026-10-22",
+        date: "2026-10-26",
         url: "https://substack.com/home/post/p-222253211",
         summary: "When was the last time you did something simply because you enjoyed it?...Read More"
       }
