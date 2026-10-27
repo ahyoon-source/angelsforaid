@@ -9,8 +9,9 @@ window.SITE = {
   name: "Angels for Aid",
   tagline: "combining beauty with social awareness",
   mission:
-    "A digital humanitarian fashion magazine that drives to connect young women with humanitarianism! A4A is a collection of blogs connecting beauty, fashion, and lifestyle with advocacy,  relief work, and civic engagement, written by ordinary users, microinfluencers, and influencers. " +
-    "This appears in the \"about us\" section near the top of the page.",
+    "A digital humanitarian fashion magazine that aims to connect young women with humanitarianism! " +
+    "A4A is a collection of blogs connecting beauty, fashion, and lifestyle with advocacy, relief work, and civic engagement, " +
+    "written by everyday people, microinfluencers, and influencers.",
   email: "angelsforaid@gmail.com",
 
   // Words that scroll across the pink bar at the very top of the page
