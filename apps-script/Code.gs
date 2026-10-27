@@ -148,8 +148,9 @@ function addImage(body, file) {
 function getSheet(form) {
   const ss = SpreadsheetApp.getActiveSpreadsheet();
   let sheet = ss.getSheetByName(form.sheet);
-  if (!sheet) {
-    sheet = ss.insertSheet(form.sheet);
+  if (!sheet) sheet = ss.insertSheet(form.sheet);
+  // A brand-new or empty tab gets its header row.
+  if (sheet.getLastColumn() === 0) {
     sheet.appendRow(form.first.concat(form.last));
     layout(sheet, form);
   }
