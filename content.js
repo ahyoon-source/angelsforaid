@@ -45,10 +45,10 @@ window.SITE = {
     // Add each new issue at the TOP of this list. Leave it empty [] to hide this part.
     issues: [
       {
-        title: "The Lost Art of Having a Hobby",
-        date: "2026-10-26",
-        url: "https://substack.com/home/post/p-222253211",
-        summary: "When was the last time you did something simply because you enjoyed it?...Read More"
+        title: "Angel’s Collection: Socio-Political Works of Fiction",
+        date: "2026-10-28",
+        url: "https://substack.com/home/post/p-222568560",
+        summary: "The Bluest Eye & Beloved - Toni Morrison. Toni Morrison appreciated the history told through slave narratives, such as those written by...Read More"
       }
     ]
   },
