@@ -54,10 +54,11 @@ window.SITE = {
   },
 
   // ---- Editorial board ----
+  // lead: true puts that person on their own line at the top (for the CEO).
   // photo: put the image in the /images folder and write "images/filename.jpg"
   // Leave photo as "" to show the person's initials instead.
   board: [
-    { name: "Emma Mulcahy", role: "Founder & CEO",   bio: "Emma Mulcahy is an undergraduate student at Cal Poly SLO. She is majoring in political science with a concentration in pre-law.", photo: "images/emma.jpeg" },
+    { name: "Emma Mulcahy", role: "Founder & CEO",   bio: "Emma Mulcahy is an undergraduate student at Cal Poly SLO. She is majoring in political science with a concentration in pre-law.", photo: "images/emma.jpeg", lead: true },
     { name: "Acacia Yoon", role: "Editor and Social Media Lead",   bio: "Acacia Yoon is an undergraduate student at Stanford University. She plans to study bio-medical computation and is on the pre-med track.", photo: "images/acacia.jpg" },
     { name: "Ruby Stone", role: "Illustrator ",   bio: "Ruby Stone is an undergraduate student at Occidentall College. She is majoring in psychology and plans to become a psychologist.", photo: "images/bee.jpg" },
 

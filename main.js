@@ -80,8 +80,9 @@
   }
 
   // Editorial board, as arched portraits
-  document.getElementById("board").innerHTML = (S.board || []).map((p) => `
-    <article class="portrait">
+  const board = S.board || [];
+  const portrait = (p) => `
+    <article class="portrait${p.lead ? " lead" : ""}">
       <div class="frame">
         <svg class="frame-halo"><use href="#halo"/></svg>
         ${photo(p, "pt-photo")}
@@ -89,7 +90,11 @@
       <h3 class="pt-name">${esc(p.name)}</h3>
       <p class="pt-role">${esc(p.role)}</p>
       <p class="pt-bio">${esc(p.bio)}</p>
-    </article>`).join("");
+    </article>`;
+  // Leads (the CEO) get their own line above everyone else.
+  const leads = board.filter((p) => p.lead), rest = board.filter((p) => !p.lead);
+  document.getElementById("board").innerHTML =
+    (leads.length ? `<div class="board-lead">${leads.map(portrait).join("")}</div>` : "") + rest.map(portrait).join("");
 
   // Collaborators, as cameos
   const collabs = S.collaborators || [];
