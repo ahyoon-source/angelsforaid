@@ -59,7 +59,7 @@ window.SITE = {
   board: [
     { name: "Emma Mulcahy", role: "Founder & CEO",   bio: "Emma Mulcahy is an undergraduate student at Cal Poly SLO. She is majoring in political science with a concentration in pre-law.", photo: "images/emma.jpeg" },
     { name: "Acacia Yoon", role: "Editorial Board and Social Media Lead",   bio: "Acacia Yoon is an undergraduate student at Stanford University. She plans to study bio-medical computation and is on the pre-med track.", photo: "images/acacia.jpg" },
-    { name: "Ruby Stone", role: "Editorial Board Illustrator ",   bio: "Ruby Stone is an undergraduate student at Occidentall College. She is majoring in psychology and plans to become a psychologist.", photo: "images/bee.jpg" },
+    { name: "Ruby Stone", role: "Editorial Board and Illustrator ",   bio: "Ruby Stone is an undergraduate student at Occidentall College. She is majoring in psychology and plans to become a psychologist.", photo: "images/bee.jpg" },
 
   ],
 
